@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="bg-background/95 backdrop-blur-sm border-b border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
@@ -12,16 +12,16 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex space-x-8">
-            <a href="#inicio" className="text-gray-600 hover:text-primary transition-colors">
+            <a href="#inicio" className="text-gray-300 hover:text-primary transition-colors">
               Inicio
             </a>
-            <a href="#servicios" className="text-gray-600 hover:text-primary transition-colors">
+            <a href="#servicios" className="text-gray-300 hover:text-primary transition-colors">
               Servicios
             </a>
-            <a href="#nosotros" className="text-gray-600 hover:text-primary transition-colors">
+            <a href="#nosotros" className="text-gray-300 hover:text-primary transition-colors">
               Nosotros
             </a>
-            <a href="#contacto" className="text-gray-600 hover:text-primary transition-colors">
+            <a href="#contacto" className="text-gray-300 hover:text-primary transition-colors">
               Contacto
             </a>
           </nav>

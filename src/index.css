@@ -5,6 +5,7 @@
 :root {
   --color-primary: #837CF3;
   --color-secondary: #9256E2;
+  --color-background: #201C2E;
 }
 
 /* Estilos globales personalizados */
@@ -18,5 +19,5 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #fff;
+  background-color: #201C2E;
 }
