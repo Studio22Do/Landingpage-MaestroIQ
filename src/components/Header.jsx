@@ -9,9 +9,6 @@ const Header = () => {
               alt="MaestroIQ Logo" 
               className="h-10 w-auto"
             />
-            <span className="ml-3 text-xl font-bold text-gray-900">
-              MaestroIQ
-            </span>
           </div>
           
           <nav className="hidden md:flex space-x-8">
