@@ -10,6 +10,7 @@ export default {
         primary: '#837CF3',
         secondary: '#9256E2',
         background: '#201C2E',
+        'gradient-end': '#502F7C',
       },
     },
   },

@@ -6,11 +6,11 @@ const Button = ({
   onClick,
   ...props 
 }) => {
-  const baseClasses = "px-4 py-2 rounded-[12px] font-medium text-sm transition-all duration-200 flex items-center justify-center gap-2 min-h-[40px]"
+  const baseClasses = "px-4 py-2 rounded-[12px] font-medium text-sm transition-all duration-300 ease-in-out flex items-center justify-center gap-2 min-h-[40px] relative overflow-hidden group"
   
   const variants = {
     primary: "bg-secondary text-white hover:bg-secondary/90 shadow-lg hover:shadow-xl",
-    outline: "border-2 border-primary text-white hover:bg-primary hover:text-white bg-transparent"
+    outline: "border-2 border-primary text-white bg-transparent hover:border-primary/50 relative"
   }
   
   return (
@@ -19,8 +19,13 @@ const Button = ({
       onClick={onClick}
       {...props}
     >
-      {icon && <span className="w-4 h-4">{icon}</span>}
-      {children}
+      {variant === 'outline' && (
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary to-gradient-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out rounded-[10px]"></div>
+      )}
+      <span className="relative z-10 flex items-center gap-2 pointer-events-none">
+        {icon && <span className="w-4 h-4">{icon}</span>}
+        {children}
+      </span>
     </button>
   )
 }
