@@ -9,17 +9,17 @@ const App = () => {
         {/* Hero Section */}
         <section className="bg-background py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl font-bold text-white mb-6">
+            <h1 className="text-5xl font-bold text-white mb-6 font-futura">
               Bienvenido a MaestroIQ
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto font-futura font-medium">
               Transformamos ideas en soluciones inteligentes que impulsan el crecimiento de tu negocio.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+              <button className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura">
                 Comenzar Ahora
               </button>
-              <button className="border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+              <button className="border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura">
                 Saber Más
               </button>
             </div>
@@ -30,10 +30,10 @@ const App = () => {
         <section className="py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-4xl font-bold text-white mb-4 font-futura">
                 Nuestros Servicios
               </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto font-futura font-medium">
                 Ofrecemos soluciones integrales para potenciar tu negocio
               </p>
             </div>
@@ -43,11 +43,11 @@ const App = () => {
                 <div className="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
                   <div className="w-8 h-8 bg-primary rounded"></div>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">Desarrollo Web</h3>
-                <p className="text-gray-300 mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-4 font-futura">Desarrollo Web</h3>
+                <p className="text-gray-300 mb-6 font-futura font-medium">
                   Creamos sitios web modernos, responsivos y optimizados para el éxito de tu negocio.
                 </p>
-                <a href="#" className="text-primary hover:text-secondary font-semibold">
+                <a href="#" className="text-primary hover:text-secondary font-semibold font-futura">
                   Conocer más →
                 </a>
               </div>
@@ -56,11 +56,11 @@ const App = () => {
                 <div className="w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center mb-6">
                   <div className="w-8 h-8 bg-secondary rounded"></div>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">Consultoría IT</h3>
-                <p className="text-gray-300 mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-4 font-futura">Consultoría IT</h3>
+                <p className="text-gray-300 mb-6 font-futura font-medium">
                   Te ayudamos a optimizar tus procesos tecnológicos y mejorar la eficiencia operativa.
                 </p>
-                <a href="#" className="text-primary hover:text-secondary font-semibold">
+                <a href="#" className="text-primary hover:text-secondary font-semibold font-futura">
                   Conocer más →
                 </a>
               </div>
@@ -69,11 +69,11 @@ const App = () => {
                 <div className="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-6">
                   <div className="w-8 h-8 bg-primary rounded"></div>
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-4">Soporte Técnico</h3>
-                <p className="text-gray-300 mb-6">
+                <h3 className="text-2xl font-semibold text-white mb-4 font-futura">Soporte Técnico</h3>
+                <p className="text-gray-300 mb-6 font-futura font-medium">
                   Mantenemos tus sistemas funcionando perfectamente con soporte 24/7.
                 </p>
-                <a href="#" className="text-primary hover:text-secondary font-semibold">
+                <a href="#" className="text-primary hover:text-secondary font-semibold font-futura">
                   Conocer más →
                 </a>
               </div>
@@ -84,13 +84,13 @@ const App = () => {
         {/* CTA Section */}
         <section className="py-20 bg-gradient-to-r from-primary to-secondary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-white mb-6 font-futura">
               ¿Listo para transformar tu negocio?
             </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto font-futura font-medium">
               Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.
             </p>
-            <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200">
+            <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura">
               Contactar Ahora
             </button>
           </div>

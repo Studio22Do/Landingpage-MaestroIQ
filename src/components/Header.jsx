@@ -11,28 +11,28 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex space-x-8 font-futura">
               <a
                 href="#funciones"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors font-medium"
               >
                 Funciones
               </a>
               <a
                 href="#planes"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors font-medium"
               >
                 Planes
               </a>
               <a
                 href="#personalizado"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors font-medium"
               >
                 Personalizado
               </a>
               <a
                 href="#ayuda"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-gray-300 hover:text-primary transition-colors font-medium"
               >
                 Ayuda
               </a>

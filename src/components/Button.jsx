@@ -6,7 +6,7 @@ const Button = ({
   onClick,
   ...props 
 }) => {
-  const baseClasses = "px-4 py-2 rounded-[12px] font-medium text-sm transition-all duration-300 ease-in-out flex items-center justify-center gap-2 min-h-[40px] relative overflow-hidden group"
+  const baseClasses = "px-4 py-2 rounded-[12px] font-futura font-medium text-sm transition-all duration-300 ease-in-out flex items-center justify-center gap-2 min-h-[40px] relative overflow-hidden group"
   
   const variants = {
     primary: "bg-secondary text-white hover:bg-secondary/90 shadow-lg hover:shadow-xl",

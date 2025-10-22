@@ -1,6 +1,45 @@
+@charset "UTF-8";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Fuentes personalizadas */
+@font-face {
+  font-family: 'FuturaCustom';
+  src: url('/fonts/Futura-Medium.woff2') format('woff2'),
+       url('/fonts/Futura-Medium.woff') format('woff'),
+       url('/fonts/Futura-Medium.ttf') format('truetype'),
+       url('/fonts/Futura-Medium.eot') format('embedded-opentype'),
+       url('/fonts/Futura-Medium.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FuturaCustom';
+  src: url('/fonts/Futura-Medium.woff2') format('woff2'),
+       url('/fonts/Futura-Medium.woff') format('woff'),
+       url('/fonts/Futura-Medium.ttf') format('truetype'),
+       url('/fonts/Futura-Medium.eot') format('embedded-opentype'),
+       url('/fonts/Futura-Medium.svg') format('svg');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FuturaCustom';
+  src: url('/fonts/Futura-Bold.woff2') format('woff2'),
+       url('/fonts/Futura-Bold.woff') format('woff'),
+       url('/fonts/Futura-Bold.ttf') format('truetype'),
+       url('/fonts/Futura-Bold.eot') format('embedded-opentype'),
+       url('/fonts/Futura-Bold.svg') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --color-primary: #837CF3;
@@ -16,8 +55,14 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'FuturaCustom', 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   background-color: #201C2E;
+  font-weight: 500;
+}
+
+/* Usar Futura para caracteres básicos, Segoe UI para acentos */
+* {
+  font-family: 'FuturaCustom', 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif !important;
 }
