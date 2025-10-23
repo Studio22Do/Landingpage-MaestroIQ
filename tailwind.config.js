@@ -7,7 +7,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'futura': ['FuturaCustom', 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'futura': ['Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'futura-medium': ['Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'futura-bold': ['Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+      },
+      fontWeight: {
+        'medium': '500',
+        'bold': 'bold',
       },
       colors: {
         primary: '#837CF3',

@@ -1,6 +1,9 @@
 import Button from "./Button";
 import UserIcon from "./UserIcon";
 
+
+
+
 const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-700">
@@ -11,28 +14,28 @@ const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <nav className="hidden md:flex space-x-8 font-futura">
+            <nav className="hidden md:flex space-x-8">
               <a
                 href="#funciones"
-                className="text-gray-300 hover:text-primary transition-colors font-medium"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Funciones
               </a>
               <a
                 href="#planes"
-                className="text-gray-300 hover:text-primary transition-colors font-medium"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Planes
               </a>
               <a
                 href="#personalizado"
-                className="text-gray-300 hover:text-primary transition-colors font-medium"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Personalizado
               </a>
               <a
                 href="#ayuda"
-                className="text-gray-300 hover:text-primary transition-colors font-medium"
+                className="text-gray-300 hover:text-primary transition-colors"
               >
                 Ayuda
               </a>
