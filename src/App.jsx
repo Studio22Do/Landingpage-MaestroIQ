@@ -1,4 +1,5 @@
 import Header from './components/Header'
+import Hero from './components/Hero'
 
 const App = () => {
   return (
@@ -6,25 +7,7 @@ const App = () => {
       <Header />
       
       <main className="pt-16">
-        {/* Hero Section */}
-        <section className="bg-background py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-5xl font-bold text-white mb-6 font-futura">
-              Bienvenido a MaestroIQ
-            </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto font-futura font-medium">
-              Transformamos ideas en soluciones inteligentes que impulsan el crecimiento de tu negocio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura">
-                Comenzar Ahora
-              </button>
-              <button className="border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura">
-                Saber Más
-              </button>
-            </div>
-          </div>
-        </section>
+        <Hero />
 
         {/* Servicios Section */}
         <section className="py-20 bg-background">
