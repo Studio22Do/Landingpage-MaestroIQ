@@ -6,7 +6,7 @@ const ButtonLarge = ({
   onClick,
   ...props 
 }) => {
-  const baseClasses = "px-8 py-4 rounded-2xl font-medium text-2xl transition-all duration-300 ease-in-out flex items-center justify-center gap-3 min-h-[65px] relative overflow-hidden group"
+  const baseClasses = "px-16 py-4 rounded-2xl font-medium text-2xl transition-all duration-300 ease-in-out flex items-center justify-center gap-3 min-h-[65px] relative overflow-hidden group"
   
   const variants = {
     primary: "bg-secondary text-white hover:bg-secondary/90 shadow-lg hover:shadow-xl",
