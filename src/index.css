@@ -21,7 +21,9 @@ body {
   font-family: 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   color: #333;
-  background-color: #201C2E;
+  background: #201C2E;
+  background: linear-gradient(8deg, rgba(32, 28, 46, 1) 0%, rgba(99, 93, 179, 1) 50%, rgba(32, 28, 46, 1) 100%);
+  min-height: 100vh;
   font-weight: 500;
 }
 
