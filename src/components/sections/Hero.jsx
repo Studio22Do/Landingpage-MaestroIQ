@@ -1,4 +1,4 @@
-import ButtonLarge from "./ButtonLarge";
+import ButtonLarge from "../ui/ButtonLarge";
 
 const Hero = () => {
   return (

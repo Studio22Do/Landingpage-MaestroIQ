@@ -1,5 +1,5 @@
-import Button from "./Button";
-import UserIcon from "./UserIcon";
+import Button from "../ui/Button";
+import UserIcon from "../icons/UserIcon";
 
 
 
