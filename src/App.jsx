@@ -1,7 +1,6 @@
 import Header from './components/layout/Header'
 import Hero from './components/sections/Hero'
-import ServicesSection from './components/sections/ServicesSection'
-import CTASection from './components/sections/CTASection'
+import KeyFeaturesSection from './components/sections/KeyFeaturesSection'
 
 const App = () => {
   return (
@@ -11,8 +10,7 @@ const App = () => {
       <main className="pt-16">
         <Hero />
 
-        <ServicesSection />
-        <CTASection />
+        <KeyFeaturesSection />
       </main>
     </div>
   )
