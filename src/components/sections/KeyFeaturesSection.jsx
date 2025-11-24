@@ -23,20 +23,20 @@ const featureCards = [
 const KeyFeaturesSection = () => {
   return (
     <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
+        <div className="max-w-6xl mx-auto text-center mb-24 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white">
             <span className="text-white">Simplifica.</span>{" "}
             <span className="text-primary">Conecta.</span>{" "}
             <span className="text-white">Optimiza.</span>
           </h2>
-          <p className="text-3xl font-medium text-white mt-6 leading-relaxed">
+          <p className="text-3xl max-w-4xl font-medium text-white mt-6 leading-relaxed">
             <span className="text-primary">Centraliza tus operaciones</span> de marketing y comunicación, integra herramientas
             clave y transforma datos en decisiones inteligentes.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8 ">
           {featureCards.map(({ id, titleLines, icon }) => (
             <article
               key={id}
