@@ -2,6 +2,7 @@ import Header from './components/layout/Header'
 import Hero from './components/sections/Hero'
 import KeyFeaturesSection from './components/sections/KeyFeaturesSection'
 import MarketingIntelligenceSection from './components/sections/MarketingIntelligenceSection'
+import PricingSection from './components/sections/PricingSection'
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
         <KeyFeaturesSection />
 
         <MarketingIntelligenceSection />
+
+        <PricingSection />
       </main>
     </div>
   )
