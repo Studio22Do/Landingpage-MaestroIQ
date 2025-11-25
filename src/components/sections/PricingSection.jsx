@@ -113,8 +113,8 @@ const PricingSection = () => {
 
               {plan.isPopular ? (
                 <ButtonLarge
-                  variant="primary"
-                  className=""
+                  variant="outline"
+                  className="w-full h-20 rounded-[15px] bg-gradient-to-r from-secondary to-gradient-end border-0 hover:opacity-90"
                 >
                   Adquirir Plan
                 </ButtonLarge>
