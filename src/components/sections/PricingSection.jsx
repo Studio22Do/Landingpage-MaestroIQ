@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "../ui/Button";
+import ButtonLarge from "../ui/ButtonLarge";
 
 const pricingPlans = [
   {
@@ -44,10 +45,6 @@ const pricingPlans = [
 const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(false);
 
-  const handleToggle = () => {
-    setIsAnnual(!isAnnual);
-  };
-
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,31 +60,27 @@ const PricingSection = () => {
         </div>
 
         {/* Toggle Mensual/Anual */}
-        <div className="flex justify-center mb-12">
-          <div className="flex rounded-[10px] border-2 border-primary overflow-hidden">
-            <button
-              onClick={() => setIsAnnual(false)}
-              className={`px-8 py-4 rounded-[10px] font-medium text-xl transition-all duration-200 ${
-                !isAnnual
-                  ? "bg-primary text-white"
-                  : "bg-transparent text-white"
-              }`}
-              aria-label="Plan mensual"
-            >
-              Mensual
-            </button>
-            <button
-              onClick={() => setIsAnnual(true)}
-              className={`px-8 py-4 rounded-[10px] font-medium text-xl transition-all duration-200 ${
-                isAnnual
-                  ? "bg-primary text-white"
-                  : "bg-transparent text-white"
-              }`}
-              aria-label="Plan anual"
-            >
-              Anual
-            </button>
-          </div>
+        <div className="flex justify-center gap-4 mb-12">
+          <Button
+            onClick={() => setIsAnnual(false)}
+            variant={!isAnnual ? "primary" : "outline"}
+            className={`px-8 py-4 rounded-[10px] font-medium text-xl ${
+              !isAnnual ? "bg-primary" : ""
+            }`}
+            aria-label="Plan mensual"
+          >
+            Mensual
+          </Button>
+          <Button
+            onClick={() => setIsAnnual(true)}
+            variant={isAnnual ? "primary" : "outline"}
+            className={`px-8 py-4 rounded-[10px] font-medium text-xl ${
+              isAnnual ? "bg-primary" : ""
+            }`}
+            aria-label="Plan anual"
+          >
+            Anual
+          </Button>
         </div>
 
         {/* Tarjetas de planes */}
@@ -120,17 +113,19 @@ const PricingSection = () => {
               </ul>
 
               {plan.isPopular ? (
-                <button
-                  className="w-full h-20 rounded-[15px] font-medium text-lg transition-all duration-300 bg-gradient-to-r from-[#9256E2] to-[#502F7C] text-white border border-primary hover:opacity-90"
+                <ButtonLarge
+                  variant="primary"
+                  className=""
                 >
                   Adquirir Plan
-                </button>
+                </ButtonLarge>
               ) : (
-                <button
-                  className="w-full h-20 rounded-[15px] font-medium text-lg transition-all duration-300 border border-primary text-white bg-transparent hover:border-primary/50"
+                <ButtonLarge
+                  variant="outline"
+                  className="w-full h-20 rounded-[15px] font-medium text-lg"
                 >
                   Adquirir Plan
-                </button>
+                </ButtonLarge>
               )}
             </article>
           ))}
