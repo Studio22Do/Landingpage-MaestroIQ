@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Button from "../ui/Button";
 import ButtonLarge from "../ui/ButtonLarge";
 
 const pricingPlans = [
@@ -61,26 +60,26 @@ const PricingSection = () => {
 
         {/* Toggle Mensual/Anual */}
         <div className="flex justify-center gap-4 mb-12">
-          <Button
+          <ButtonLarge
             onClick={() => setIsAnnual(false)}
             variant={!isAnnual ? "primary" : "outline"}
-            className={`px-8 py-4 rounded-[10px] font-medium text-xl ${
+            className={`${
               !isAnnual ? "bg-primary" : ""
             }`}
             aria-label="Plan mensual"
           >
             Mensual
-          </Button>
-          <Button
+          </ButtonLarge>
+          <ButtonLarge
             onClick={() => setIsAnnual(true)}
             variant={isAnnual ? "primary" : "outline"}
-            className={`px-8 py-4 rounded-[10px] font-medium text-xl ${
+            className={`${
               isAnnual ? "bg-primary" : ""
             }`}
             aria-label="Plan anual"
           >
             Anual
-          </Button>
+          </ButtonLarge>
         </div>
 
         {/* Tarjetas de planes */}
@@ -101,13 +100,13 @@ const PricingSection = () => {
                 {plan.monthlyPrice}
               </p>
 
-              <ul className="flex-1 space-y-4 mb-8">
+              <ul className="flex-1 space-y-1 mb-8">
                 {plan.features.map((feature, index) => (
                   <li
                     key={index}
                     className="text-xl font-medium text-primary text-center"
                   >
-                    {feature}
+                    - {feature}
                   </li>
                 ))}
               </ul>
@@ -122,7 +121,7 @@ const PricingSection = () => {
               ) : (
                 <ButtonLarge
                   variant="outline"
-                  className="w-full h-20 rounded-[15px] font-medium text-lg"
+                  className="w-full h-20 rounded-[15px] "
                 >
                   Adquirir Plan
                 </ButtonLarge>
