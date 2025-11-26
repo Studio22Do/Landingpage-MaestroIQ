@@ -22,7 +22,7 @@ const featureCards = [
 
 const KeyFeaturesSection = () => {
   return (
-    <section className="py-20">
+    <section id="funciones" className="py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white">

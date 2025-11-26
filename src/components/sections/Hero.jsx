@@ -3,7 +3,7 @@ import heroImage from "../../assets/Group 237553.png";
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="inicio" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
         {/* Contenido del lado izquierdo */}
         <div className="text-center lg:text-left z-10">

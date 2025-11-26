@@ -49,7 +49,9 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           <div className="flex items-center">
-            <img src="/logo.png" alt="MaestroIQ Logo" className="h-9 w-auto" />
+            <a href="#inicio" className="cursor-pointer">
+              <img src="/logo.png" alt="MaestroIQ Logo" className="h-9 w-auto" />
+            </a>
           </div>
 
           <div className="flex items-center space-x-8 h-full">
