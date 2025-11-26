@@ -1,4 +1,5 @@
 import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
 import KeyFeaturesSection from './components/sections/KeyFeaturesSection'
 import MarketingIntelligenceSection from './components/sections/MarketingIntelligenceSection'
@@ -24,6 +25,8 @@ const App = () => {
 
         <HelpSection />
       </main>
+
+      <Footer />
     </div>
   )
 }
