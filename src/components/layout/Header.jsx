@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../ui/Button";
 import UserIcon from "../icons/UserIcon";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +23,9 @@ const Header = () => {
           : "bg-transparent border-b border-transparent"
       }`}
     >
+      <div className="w-full">
+        <LanguageSwitcher />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
