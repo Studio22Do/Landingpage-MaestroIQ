@@ -26,7 +26,7 @@ const Hero = () => {
           <img
             src={heroImage}
             alt="Dispositivos MaestroIQ"
-            className="w-full max-w-5xl lg:max-w-none lg:w-[800px] xl:w-[1000px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2"
+            className="w-full max-w-5xl lg:max-w-none lg:w-[800px] xl:w-[900px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2"
           />
         </div>
       </div>
