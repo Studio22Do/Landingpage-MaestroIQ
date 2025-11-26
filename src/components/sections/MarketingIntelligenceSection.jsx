@@ -22,8 +22,8 @@ const MarketingIntelligenceSection = () => {
       // La animación debe comenzar cuando la sección empieza a entrar en el viewport
       // y terminar cuando sale completamente
       // Usamos un rango más amplio para que la animación sea más sensible y comience antes
-      const animationStart = windowHeight * 1.2; // Comienza antes de que entre completamente
-      const animationEnd = -windowHeight * 0.2; // Termina después de que salga
+      const animationStart = windowHeight * 1.5; // Comienza más temprano, antes de que entre completamente
+      const animationEnd = -windowHeight * 0.3; // Termina después de que salga
       const animationRange = animationStart - animationEnd;
       
       // Calcular progreso: 0 cuando empieza a entrar, 0.5 cuando está centrada, 1 cuando sale
@@ -42,28 +42,27 @@ const MarketingIntelligenceSection = () => {
 
   // Calcular la posición X de la imagen basada en el progreso
   // Crear un rango amplio donde la imagen esté completamente visible
-  // 0 -> ligeramente a la derecha (translateX positivo, imagen parcialmente visible)
-  // 0.25-0.75 -> posición normal (translateX 0, imagen completamente visible)
-  // 1 -> ligeramente a la derecha de nuevo (translateX positivo, imagen parcialmente visible)
+  // La imagen debe estar más a la derecha por defecto, cortándose un poco
   const getImageTransform = () => {
-    const maxOffset = 30; // Reducido de 100% a 30% para que no esté tan oculta
+    const maxOffset = 15; // Reducido a 15% para que la imagen inicie más visible
+    const baseOffset = 10; // Offset base hacia la derecha cuando está más visible
     const visibleStart = 0.25; // Comienza a estar completamente visible
     const visibleEnd = 0.75; // Termina de estar completamente visible
     let translateX = 0;
     
     if (scrollProgress < visibleStart) {
-      // Primera parte: moverse desde ligeramente fuera (derecha) hacia el centro
-      // progress 0 -> translateX máximo (30%), progress 0.25 -> translateX 0 (centro)
+      // Primera parte: moverse desde ligeramente fuera (derecha) hacia la posición base
+      // progress 0 -> translateX máximo (15% + baseOffset), progress 0.25 -> translateX baseOffset
       const progress = scrollProgress / visibleStart; // Normalizar de 0-0.25 a 0-1
-      translateX = (1 - progress) * maxOffset; // 30% a 0% (de derecha a centro)
+      translateX = baseOffset + (1 - progress) * maxOffset; // (baseOffset + 15%) a baseOffset
     } else if (scrollProgress > visibleEnd) {
-      // Última parte: moverse desde el centro hacia ligeramente fuera (derecha)
-      // progress 0.75 -> translateX 0 (centro), progress 1 -> translateX máximo (30%)
+      // Última parte: moverse desde la posición base hacia ligeramente fuera (derecha)
+      // progress 0.75 -> translateX baseOffset, progress 1 -> translateX máximo (15% + baseOffset)
       const progress = (scrollProgress - visibleEnd) / (1 - visibleEnd); // Normalizar de 0.75-1 a 0-1
-      translateX = progress * maxOffset; // 0% a 30% (de centro a derecha)
+      translateX = baseOffset + progress * maxOffset; // baseOffset a (baseOffset + 15%)
     } else {
-      // Zona media: imagen completamente visible (translateX = 0)
-      translateX = 0;
+      // Zona media: imagen en posición base (más a la derecha, cortándose un poco)
+      translateX = baseOffset;
     }
     
     return translateX;
@@ -81,7 +80,7 @@ const MarketingIntelligenceSection = () => {
       >
         <div className=" pl-24 flex flex-col lg:flex-row gap-12 items-center justify-between w-full">
           {/* Contenido del lado izquierdo */}
-          <div className="text-center lg:text-left w-7/12">
+          <div className="text-center lg:text-left w-9/12">
             <h2 className="text-6xl font-bold leading-tight mb-8 text-white ">
               <span className="text-primary">Unifica</span> tus herramientas.{" "}
               <span className="text-primary">Multiplica</span> tu impacto.
@@ -108,7 +107,7 @@ const MarketingIntelligenceSection = () => {
             <img 
               src={tabletImage} 
               alt="Marketing Intelligence Console" 
-              className="w-full max-w-2xl h-auto"
+              className="w-full max-w-5xl h-auto"
             />
           </div>
         </div>
