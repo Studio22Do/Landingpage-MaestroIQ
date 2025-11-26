@@ -25,19 +25,19 @@ const HelpSection = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row justify-center items-center max-w-2xl mx-auto"
+            className="flex flex-col sm:flex-row justify-center items-center max-w-md mx-auto"
           >
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Correo"
-              className="w-full sm:flex-1 h-[85px] px-10 rounded-l-[20px] rounded-r-0 border-2 border-r-0 border-primary bg-transparent text-white placeholder:text-white/30 text-3xl font-medium focus:outline-none focus:border-primary/50"
+              className="w-full sm:flex-1 h-[65px] px-10 rounded-l-[20px] rounded-r-0 border-2 border-r-0 border-primary bg-transparent text-white placeholder:text-white/30 text-2xl font-medium focus:outline-none focus:border-primary/50"
               required
             />
             <button
               type="submit"
-              className="w-full sm:w-auto h-[85px] px-12 rounded-r-[15px] rounded-l-0 bg-gradient-to-r from-secondary to-gradient-end text-white text-3xl font-medium border border-l-0 border-primary hover:opacity-90 transition-opacity duration-200"
+              className="w-full sm:w-auto h-[65px] px-12 rounded-r-[15px] rounded-l-0 bg-gradient-to-r from-secondary to-gradient-end text-white text-2xl font-medium border border-l-0 border-primary hover:opacity-90 transition-opacity duration-200"
             >
               Enviar
             </button>
