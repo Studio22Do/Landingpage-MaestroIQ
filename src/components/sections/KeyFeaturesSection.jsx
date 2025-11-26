@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import shieldIcon from "../../assets/icons/feature-shield.svg";
 import laptopIcon from "../../assets/icons/feature-laptop.svg";
 import headsetIcon from "../../assets/icons/feature-headset.svg";
@@ -21,8 +22,36 @@ const featureCards = [
 ];
 
 const KeyFeaturesSection = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.4, // Se activa cuando el 30% de la sección es visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="funciones" className="py-40 scroll-mt-24">
+    <section ref={sectionRef} id="funciones" className="py-40 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white">
@@ -37,10 +66,17 @@ const KeyFeaturesSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 w-8/12">
-          {featureCards.map(({ id, titleLines, icon }) => (
+          {featureCards.map(({ id, titleLines, icon }, index) => (
             <article
               key={id}
-              className="rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center flex flex-col items-center gap-6"
+              className={`rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center flex flex-col items-center gap-6 transition-all duration-900 ease-out ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{
+                transitionDelay: isVisible ? `${index * 240}ms` : "0ms",
+              }}
               aria-label={`Beneficio: ${titleLines.join(" ")}`}
             >
               <div className="h-28 flex items-center justify-center">
