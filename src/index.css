@@ -11,6 +11,10 @@
 }
 
 /* Estilos globales personalizados */
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -22,7 +26,7 @@ body {
   line-height: 1.6;
   color: #333;
   background: #201C2E;
-  background: linear-gradient(8deg, rgba(32, 28, 46, 1) 0%, rgba(99, 93, 179, 1) 50%, rgba(32, 28, 46, 1) 100%);
+  background: linear-gradient(8deg, rgba(32, 28, 46, 1) 10%, rgba(99, 93, 179, 1) 50%, rgba(32, 28, 46, 1) 90%);
   min-height: 100vh;
   font-weight: 500;
 }

@@ -45,7 +45,7 @@ const PricingSection = () => {
   const [isAnnual, setIsAnnual] = useState(false);
 
   return (
-    <section className="py-20">
+    <section id="planes" className="py-20 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-6xl font-bold text-white mb-8">
@@ -113,8 +113,8 @@ const PricingSection = () => {
 
               {plan.isPopular ? (
                 <ButtonLarge
-                  variant="primary"
-                  className=""
+                  variant="outline"
+                  className="w-full h-20 rounded-[15px] bg-gradient-to-r from-secondary to-gradient-end border-0 hover:opacity-90"
                 >
                   Adquirir Plan
                 </ButtonLarge>

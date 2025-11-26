@@ -1,51 +1,95 @@
+import { useState, useEffect } from "react";
 import Button from "../ui/Button";
 import UserIcon from "../icons/UserIcon";
-
-
-
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Determinar si se ha hecho scroll suficiente para cambiar el fondo
+      setIsScrolled(currentScrollY > 50);
+      
+      // Detectar dirección del scroll
+      if (currentScrollY < lastScrollY) {
+        // Scroll hacia arriba - mostrar header
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scroll hacia abajo y más de 100px - ocultar header
+        setIsVisible(false);
+      }
+      
+      // Si estamos en la parte superior, siempre mostrar el header
+      if (currentScrollY <= 0) {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-gray-700">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
+        isScrolled
+          ? "bg-background/95 backdrop-blur-sm border-b border-gray-700"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-24">
           <div className="flex items-center">
-            <img src="/logo.png" alt="MaestroIQ Logo" className="h-10 w-auto" />
+            <a href="#inicio" className="cursor-pointer">
+              <img src="/logo.png" alt="MaestroIQ Logo" className="h-9 w-auto" />
+            </a>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-8 h-full">
             <nav className="hidden md:flex space-x-8">
               <a
                 href="#funciones"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Funciones
               </a>
               <a
                 href="#planes"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Planes
               </a>
               <a
                 href="#personalizado"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Personalizado
               </a>
               <a
                 href="#ayuda"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Ayuda
               </a>
             </nav>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 h-full">
               <Button variant="outline">Crear Cuenta</Button>
               <Button variant="primary" icon={<UserIcon />}>
                 Iniciar Sesión
               </Button>
+              <div className="self-start">
+                <LanguageSwitcher />
+              </div>
             </div>
           </div>
         </div>
