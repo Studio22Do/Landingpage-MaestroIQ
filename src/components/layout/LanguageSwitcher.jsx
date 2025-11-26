@@ -9,8 +9,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="w-full flex justify-end pr-4 sm:pr-6 lg:pr-8">
-      <div className="relative" style={{ width: "60px", height: "32px" }}>
+    <div className="relative" style={{ width: "60px", height: "32px" }}>
         {/* Rectángulo de fondo para la opción seleccionada */}
         <div
           className="absolute transition-all duration-300"
@@ -46,7 +45,6 @@ const LanguageSwitcher = () => {
             ES
           </button>
         </div>
-      </div>
     </div>
   );
 };
