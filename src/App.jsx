@@ -3,6 +3,7 @@ import Hero from './components/sections/Hero'
 import KeyFeaturesSection from './components/sections/KeyFeaturesSection'
 import MarketingIntelligenceSection from './components/sections/MarketingIntelligenceSection'
 import PricingSection from './components/sections/PricingSection'
+import CustomPlanSection from './components/sections/CustomPlanSection'
 
 const App = () => {
   return (
@@ -17,6 +18,8 @@ const App = () => {
         <MarketingIntelligenceSection />
 
         <PricingSection />
+
+        <CustomPlanSection />
       </main>
     </div>
   )
