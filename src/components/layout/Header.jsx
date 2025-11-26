@@ -52,29 +52,29 @@ const Header = () => {
             <img src="/logo.png" alt="MaestroIQ Logo" className="h-9 w-auto" />
           </div>
 
-          <div className="flex items-center space-x-4  h-full">
+          <div className="flex items-center space-x-8 h-full">
             <nav className="hidden md:flex space-x-8">
               <a
                 href="#funciones"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Funciones
               </a>
               <a
                 href="#planes"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Planes
               </a>
               <a
                 href="#personalizado"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Personalizado
               </a>
               <a
                 href="#ayuda"
-                className="text-gray-300 hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors"
               >
                 Ayuda
               </a>
