@@ -41,23 +41,29 @@ const MarketingIntelligenceSection = () => {
   }, []);
 
   // Calcular la posición X de la imagen basada en el progreso
+  // Crear un rango amplio donde la imagen esté completamente visible
   // 0 -> ligeramente a la derecha (translateX positivo, imagen parcialmente visible)
-  // 0.5 -> posición normal (translateX 0, imagen en su lugar)
+  // 0.25-0.75 -> posición normal (translateX 0, imagen completamente visible)
   // 1 -> ligeramente a la derecha de nuevo (translateX positivo, imagen parcialmente visible)
   const getImageTransform = () => {
     const maxOffset = 30; // Reducido de 100% a 30% para que no esté tan oculta
+    const visibleStart = 0.25; // Comienza a estar completamente visible
+    const visibleEnd = 0.75; // Termina de estar completamente visible
     let translateX = 0;
     
-    if (scrollProgress < 0.5) {
-      // Primera mitad: moverse desde ligeramente fuera (derecha) hacia el centro
-      // progress 0 -> translateX máximo (30%), progress 0.5 -> translateX 0 (centro)
-      const progress = scrollProgress * 2; // Normalizar de 0-0.5 a 0-1
+    if (scrollProgress < visibleStart) {
+      // Primera parte: moverse desde ligeramente fuera (derecha) hacia el centro
+      // progress 0 -> translateX máximo (30%), progress 0.25 -> translateX 0 (centro)
+      const progress = scrollProgress / visibleStart; // Normalizar de 0-0.25 a 0-1
       translateX = (1 - progress) * maxOffset; // 30% a 0% (de derecha a centro)
-    } else {
-      // Segunda mitad: moverse desde el centro hacia ligeramente fuera (derecha)
-      // progress 0.5 -> translateX 0 (centro), progress 1 -> translateX máximo (30%)
-      const progress = (scrollProgress - 0.5) * 2; // Normalizar de 0.5-1 a 0-1
+    } else if (scrollProgress > visibleEnd) {
+      // Última parte: moverse desde el centro hacia ligeramente fuera (derecha)
+      // progress 0.75 -> translateX 0 (centro), progress 1 -> translateX máximo (30%)
+      const progress = (scrollProgress - visibleEnd) / (1 - visibleEnd); // Normalizar de 0.75-1 a 0-1
       translateX = progress * maxOffset; // 0% a 30% (de centro a derecha)
+    } else {
+      // Zona media: imagen completamente visible (translateX = 0)
+      translateX = 0;
     }
     
     return translateX;
