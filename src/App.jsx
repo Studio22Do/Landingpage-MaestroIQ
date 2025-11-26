@@ -4,6 +4,7 @@ import KeyFeaturesSection from './components/sections/KeyFeaturesSection'
 import MarketingIntelligenceSection from './components/sections/MarketingIntelligenceSection'
 import PricingSection from './components/sections/PricingSection'
 import CustomPlanSection from './components/sections/CustomPlanSection'
+import HelpSection from './components/sections/HelpSection'
 
 const App = () => {
   return (
@@ -20,6 +21,8 @@ const App = () => {
         <PricingSection />
 
         <CustomPlanSection />
+
+        <HelpSection />
       </main>
     </div>
   )
