@@ -75,8 +75,8 @@ const KeyFeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white overflow-hidden">
-            {getTranslation(language, "keyFeatures.title").split(" ").map((word, index) => (
-              <span key={index} className="inline-block overflow-hidden">
+            {getTranslation(language, "keyFeatures.title").split(" ").map((word, index, array) => (
+              <span key={index} className="inline-block overflow-hidden" style={{ marginRight: index < array.length - 1 ? "0.25em" : "0" }}>
                 <span
                   className={`inline-block transition-all ease-text-in ${
                     isVisible
@@ -92,7 +92,6 @@ const KeyFeaturesSection = () => {
                   <span className={word.includes("Conecta") || word.includes("Connect") ? "text-primary" : "text-white"}>
                     {word}
                   </span>
-                  {index < getTranslation(language, "keyFeatures.title").split(" ").length - 1 && " "}
                 </span>
               </span>
             ))}
