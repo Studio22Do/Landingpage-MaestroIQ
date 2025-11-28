@@ -21,7 +21,7 @@ const Hero = () => {
         <img
           src={blobSvg}
           alt=""
-          className="floating-blob w-[281px] h-[288px] opacity-30"
+          className="floating-blob w-[301px] h-[308px] opacity-80"
           style={{
             position: "absolute",
             top: "10%",

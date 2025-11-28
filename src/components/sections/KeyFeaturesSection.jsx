@@ -4,6 +4,7 @@ import { getTranslation } from "../../translations";
 import shieldIcon from "../../assets/icons/feature-shield.svg";
 import laptopIcon from "../../assets/icons/feature-laptop.svg";
 import headsetIcon from "../../assets/icons/feature-headset.svg";
+import blobSvg from "../../assets/Blob.svg";
 
 const KeyFeaturesSection = () => {
   const { language } = useLanguage();
@@ -54,8 +55,24 @@ const KeyFeaturesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="funciones" className="py-40 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
+    <section ref={sectionRef} id="funciones" className="py-40 scroll-mt-24 relative overflow-hidden">
+      {/* Blob de fondo con animación de flotamiento */}
+      <div className="absolute inset-0 flex items-center justify-end pointer-events-none z-0">
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[281px] h-[288px] opacity-30"
+          style={{
+            position: "absolute",
+            top: "40%",
+            right: "-8%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col relative z-10">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white overflow-hidden">
             {getTranslation(language, "keyFeatures.title").split(" ").map((word, index) => (
