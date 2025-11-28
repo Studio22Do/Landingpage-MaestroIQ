@@ -35,3 +35,10 @@ body {
 * {
   font-family: 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
+
+/* Easing personalizado para animaciones de texto */
+@layer utilities {
+  .ease-text-in {
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+}

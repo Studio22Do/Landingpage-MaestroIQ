@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.png";
 import tabletImage from "../../assets/Group 237552.png";
@@ -6,6 +6,8 @@ import tabletImage from "../../assets/Group 237552.png";
 const MarketingIntelligenceSection = () => {
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const [isTextVisible, setIsTextVisible] = useState(false);
   const targetTranslateX = useRef(40); // Valor objetivo (usando ref para evitar problemas de closure)
   const currentTranslateX = useRef(40); // Valor actual que se suaviza
   const rafId = useRef(null);
@@ -62,6 +64,32 @@ const MarketingIntelligenceSection = () => {
     }
   };
 
+  // Observer para detectar cuando la sección entra en el viewport y activar animación de texto
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsTextVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Se activa cuando el 30% de la sección es visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -113,10 +141,41 @@ const MarketingIntelligenceSection = () => {
       >
         <div className=" pl-24 flex flex-col lg:flex-row gap-12 items-center justify-between w-full">
           {/* Contenido del lado izquierdo */}
-          <div className="text-center lg:text-left w-9/12">
-            <h2 className="text-6xl font-bold leading-tight mb-8 text-white ">
-              <span className="text-primary">Unifica</span> tus herramientas.{" "}
-              <span className="text-primary">Multiplica</span> tu impacto.
+          <div ref={textContainerRef} className="text-center lg:text-left w-9/12 overflow-hidden">
+            <h2 className="text-6xl font-bold leading-tight mb-8 text-white">
+              <span className="inline-block overflow-hidden">
+                <span
+                  className={`inline-block transition-all ease-text-in ${
+                    isTextVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[140%] opacity-0"
+                  }`}
+                  style={{ 
+                    transitionDuration: "0.6s",
+                    transitionDelay: "0s",
+                    transitionProperty: "transform, opacity"
+                  }}
+                >
+                  <span className="text-primary">Unifica</span> tus herramientas.
+                </span>
+              </span>
+              <span className="inline-block overflow-hidden">
+                <span
+                  className={`inline-block transition-all ease-text-in ${
+                    isTextVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[140%] opacity-0"
+                  }`}
+                  style={{ 
+                    transitionDuration: "0.6s",
+                    transitionDelay: "0.15s",
+                    transitionProperty: "transform, opacity"
+                  }}
+                >
+                  {" "}
+                  <span className="text-primary">Multiplica</span> tu impacto.
+                </span>
+              </span>
             </h2>
 
             <p className="text-3xl font-medium text-white mb-12 leading-relaxed">
