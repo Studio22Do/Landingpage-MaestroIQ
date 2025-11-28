@@ -42,3 +42,12 @@ body {
     transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
   }
 }
+
+
+
+
+/* Firefox */
+* {
+  
+  scrollbar-color: #837CF3 rgba(0, 0, 0, 0.801);
+}
