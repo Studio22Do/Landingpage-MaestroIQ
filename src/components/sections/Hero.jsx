@@ -3,6 +3,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import heroImage from "../../assets/Group 237553.png";
+import blobSvg from "../../assets/Blob.svg";
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -14,8 +15,24 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
+    <section id="inicio" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+      {/* Blob de fondo con animación de flotamiento */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[281px] h-[288px] opacity-30"
+          style={{
+            position: "absolute",
+            top: "10%",
+            right: "0%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
+      
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* Contenido del lado izquierdo */}
         <div className="text-center lg:text-left z-10 overflow-hidden">
           <h1
