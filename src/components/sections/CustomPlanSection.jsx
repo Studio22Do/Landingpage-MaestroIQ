@@ -3,6 +3,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import layerImage from "../../assets/Layer.png";
+import blobSvg from "../../assets/Blob.svg";
 
 const CustomPlanSection = () => {
   const { language } = useLanguage();
@@ -117,28 +118,21 @@ const CustomPlanSection = () => {
   };
 
   // Calcular valores objetivo basados en scroll (desde la izquierda)
-  const calculateTargets = (progress) => {
+  const calculateTargets = (entryProgress) => {
     const maxOffset = -100; // Desde la izquierda
-    const visibleStart = 0.2;
-    const visibleEnd = 0.9; // Aumentado para que la animación de salida comience más tarde
+    const visibleStart = 0.1;
 
     let translateX = maxOffset;
     let opacity = 0;
 
-    if (progress < visibleStart) {
+    if (entryProgress < visibleStart) {
       // Antes de entrar: completamente oculto a la izquierda
-      // progress 0 -> translateX = -100, progress visibleStart -> translateX = 0
-      const normalizedProgress = progress / visibleStart;
+      // entryProgress 0 -> translateX = -100, entryProgress visibleStart -> translateX = 0
+      const normalizedProgress = entryProgress / visibleStart;
       translateX = maxOffset + normalizedProgress * Math.abs(maxOffset);
       opacity = normalizedProgress;
-    } else if (progress > visibleEnd) {
-      // Después de salir: moverse hacia la izquierda y desaparecer
-      // progress visibleEnd -> translateX = 0, progress 1 -> translateX = -100
-      const normalizedProgress = (progress - visibleEnd) / (1 - visibleEnd);
-      translateX = -normalizedProgress * Math.abs(maxOffset);
-      opacity = 1 - normalizedProgress;
     } else {
-      // En el rango visible: completamente visible
+      // Una vez que entra, se queda visible
       translateX = 0;
       opacity = 1;
     }
@@ -147,28 +141,21 @@ const CustomPlanSection = () => {
   };
 
   // Calcular valores objetivo basados en scroll (desde la derecha)
-  const calculateImageTargets = (progress) => {
+  const calculateImageTargets = (entryProgress) => {
     const maxOffset = 100; // Desde la derecha
-    const visibleStart = 0.2;
-    const visibleEnd = 0.95; // Aumentado para que la animación de salida comience más tarde
+    const visibleStart = 0.1;
 
     let translateX = maxOffset;
     let opacity = 0;
 
-    if (progress < visibleStart) {
+    if (entryProgress < visibleStart) {
       // Antes de entrar: completamente oculto a la derecha
-      // progress 0 -> translateX = 100, progress visibleStart -> translateX = 0
-      const normalizedProgress = progress / visibleStart;
+      // entryProgress 0 -> translateX = 100, entryProgress visibleStart -> translateX = 0
+      const normalizedProgress = entryProgress / visibleStart;
       translateX = maxOffset - normalizedProgress * Math.abs(maxOffset);
       opacity = normalizedProgress;
-    } else if (progress > visibleEnd) {
-      // Después de salir: moverse hacia la derecha y desaparecer
-      // progress visibleEnd -> translateX = 0, progress 1 -> translateX = 100
-      const normalizedProgress = (progress - visibleEnd) / (1 - visibleEnd);
-      translateX = normalizedProgress * Math.abs(maxOffset);
-      opacity = 1 - normalizedProgress;
     } else {
-      // En el rango visible: completamente visible
+      // Una vez que entra, se queda visible
       translateX = 0;
       opacity = 1;
     }
@@ -193,54 +180,20 @@ const CustomPlanSection = () => {
 
       const progress = Math.max(0, Math.min(1, (animationStart - sectionTop) / animationRange));
 
-      // Calcular valores objetivo para cada elemento con delays
-      const visibleEnd = 0.9;
-      const visibleStart = 0.2;
+      // Calcular progreso con delays para la entrada
+      const entryDelay = 0.1;
       
-      // Durante la entrada: delays normales
-      let titleProgress = Math.max(0, Math.min(1, progress));
-      let descriptionProgress = Math.max(0, Math.min(1, progress - 0.1));
-      let buttonProgress = Math.max(0, Math.min(1, progress - 0.2));
-      let imageProgress = Math.max(0, Math.min(1, progress - 0.1));
+      // Progreso con delays para la entrada
+      const titleEntryProgress = Math.max(0, Math.min(1, progress));
+      const descriptionEntryProgress = Math.max(0, Math.min(1, progress - entryDelay));
+      const buttonEntryProgress = Math.max(0, Math.min(1, progress - entryDelay * 2));
+      const imageEntryProgress = Math.max(0, Math.min(1, progress - entryDelay));
 
-      // Durante la salida: ajustar para que salgan con retraso secuencial
-      if (progress > visibleEnd) {
-        // Si el progreso ha llegado a 1 o muy cerca, forzar todos a estar completamente ocultos
-        if (progress >= 0.99) {
-          titleProgress = 1;
-          descriptionProgress = 1;
-          buttonProgress = 1;
-          imageProgress = 1;
-        } else {
-          // Calcular cuánto ha avanzado la salida (0 a 1)
-          const exitProgress = (progress - visibleEnd) / (1 - visibleEnd);
-          // Aplicar delays durante la salida
-          const exitDelay = 0.15; // Delay entre cada elemento al salir
-          
-          // Calcular el progreso de salida para cada elemento con delays
-          const titleExitProgress = Math.min(1, exitProgress);
-          const descriptionExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay));
-          const buttonExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay * 2));
-          const imageExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay));
-          
-          // Aplicar el progreso de salida al progreso total
-          titleProgress = visibleEnd + titleExitProgress * (1 - visibleEnd);
-          descriptionProgress = visibleEnd + descriptionExitProgress * (1 - visibleEnd);
-          buttonProgress = visibleEnd + buttonExitProgress * (1 - visibleEnd);
-          imageProgress = visibleEnd + imageExitProgress * (1 - visibleEnd);
-          
-          // Asegurar que no excedan 1
-          titleProgress = Math.min(1, titleProgress);
-          descriptionProgress = Math.min(1, descriptionProgress);
-          buttonProgress = Math.min(1, buttonProgress);
-          imageProgress = Math.min(1, imageProgress);
-        }
-      }
-
-      titleTarget.current = calculateTargets(titleProgress);
-      descriptionTarget.current = calculateTargets(descriptionProgress);
-      buttonTarget.current = calculateTargets(buttonProgress);
-      imageTarget.current = calculateImageTargets(imageProgress);
+      // Calcular los valores objetivo (solo entrada, se quedan visibles)
+      titleTarget.current = calculateTargets(titleEntryProgress);
+      descriptionTarget.current = calculateTargets(descriptionEntryProgress);
+      buttonTarget.current = calculateTargets(buttonEntryProgress);
+      imageTarget.current = calculateImageTargets(imageEntryProgress);
 
       // Iniciar animación si no está corriendo
       if (!rafId.current) {
@@ -261,8 +214,23 @@ const CustomPlanSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="personalizado" className="py-20 scroll-mt-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="personalizado" className="py-20 scroll-mt-24 overflow-hidden relative">
+      {/* Blob de fondo con animación de flotamiento */}
+      <div className="absolute inset-0 flex items-center justify-start pointer-events-none z-0">
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[281px] h-[288px] opacity-100"
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "-8%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 items-center justify-between ">
           {/* Contenido del lado izquierdo */}
           <div className="text-center lg:text-left flex-[1.2]">
