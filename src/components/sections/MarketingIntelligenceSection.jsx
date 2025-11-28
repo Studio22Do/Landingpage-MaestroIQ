@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.png";
 import tabletImage from "../../assets/Group 237552.png";
 
 const MarketingIntelligenceSection = () => {
+  const { language } = useLanguage();
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
   const textContainerRef = useRef(null);
@@ -156,7 +159,8 @@ const MarketingIntelligenceSection = () => {
                     transitionProperty: "transform, opacity"
                   }}
                 >
-                  <span className="text-primary">Unifica</span> tus herramientas.
+                  <span className="text-primary">{getTranslation(language, "marketingIntelligence.titleHighlight1")}</span>{" "}
+                  {language === "ES" ? "tus herramientas." : "your tools."}
                 </span>
               </span>
               <span className="inline-block overflow-hidden">
@@ -173,19 +177,18 @@ const MarketingIntelligenceSection = () => {
                   }}
                 >
                   {" "}
-                  <span className="text-primary">Multiplica</span> tu impacto.
+                  <span className="text-primary">{getTranslation(language, "marketingIntelligence.titleHighlight2")}</span>{" "}
+                  {language === "ES" ? "tu impacto." : "your impact."}
                 </span>
               </span>
             </h2>
 
             <p className="text-3xl font-medium text-white mb-12 leading-relaxed">
-              Accede a información clave en medios, marketing y análisis de
-              mercado para impulsar decisiones estratégicas más rápidas y
-              efectivas.
+              {getTranslation(language, "marketingIntelligence.description")}
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <ButtonLarge variant="outline">Regístrate</ButtonLarge>
+              <ButtonLarge variant="outline">{getTranslation(language, "marketingIntelligence.button")}</ButtonLarge>
             </div>
           </div>
 

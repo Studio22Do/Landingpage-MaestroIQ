@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import Button from "../ui/Button";
 import UserIcon from "../icons/UserIcon";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const { language } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -60,32 +63,32 @@ const Header = () => {
                 href="#funciones"
                 className="text-white hover:text-primary transition-colors"
               >
-                Funciones
+                {getTranslation(language, "header.funciones")}
               </a>
               <a
                 href="#planes"
                 className="text-white hover:text-primary transition-colors"
               >
-                Planes
+                {getTranslation(language, "header.planes")}
               </a>
               <a
                 href="#personalizado"
                 className="text-white hover:text-primary transition-colors"
               >
-                Personalizado
+                {getTranslation(language, "header.personalizado")}
               </a>
               <a
                 href="#ayuda"
                 className="text-white hover:text-primary transition-colors"
               >
-                Ayuda
+                {getTranslation(language, "header.ayuda")}
               </a>
             </nav>
 
             <div className="flex items-center space-x-4 h-full">
-              <Button variant="outline">Crear Cuenta</Button>
+              <Button variant="outline">{getTranslation(language, "header.crearCuenta")}</Button>
               <Button variant="primary" icon={<UserIcon />}>
-                Iniciar Sesión
+                {getTranslation(language, "header.iniciarSesion")}
               </Button>
               <div className="self-start">
                 <LanguageSwitcher />

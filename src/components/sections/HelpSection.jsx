@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 
 const HelpSection = () => {
+  const { language } = useLanguage();
   const [email, setEmail] = useState("");
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -53,7 +56,9 @@ const HelpSection = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            ¿Necesitas <span className="text-primary">ayuda?</span>
+            {language === "ES" ? "¿Necesitas" : "Need"}{" "}
+            <span className="text-primary">{getTranslation(language, "help.titleHighlight")}</span>
+            {language === "ES" ? "?" : "?"}
           </h2>
 
           <p
@@ -68,8 +73,7 @@ const HelpSection = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            ¿Tienes dudas o no sabes por dónde empezar? No te preocupes, nuestros
-            expertos están disponibles para ayudarte cuando lo necesites.
+            {getTranslation(language, "help.description")}
           </p>
 
           <form
@@ -89,7 +93,7 @@ const HelpSection = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Correo"
+              placeholder={getTranslation(language, "help.emailPlaceholder")}
               className="w-full sm:flex-1 h-[65px] px-10 rounded-l-[20px] rounded-r-0 border-2 border-r-0 border-primary bg-transparent text-white placeholder:text-white/30 text-2xl font-medium focus:outline-none focus:border-primary/50"
               required
             />
@@ -97,7 +101,7 @@ const HelpSection = () => {
               type="submit"
               className="w-full sm:w-auto h-[65px] px-12 rounded-r-[15px] rounded-l-0 bg-gradient-to-r from-secondary to-gradient-end text-white text-2xl font-medium border border-l-0 border-primary hover:opacity-90 transition-opacity duration-200"
             >
-              Enviar
+              {getTranslation(language, "help.button")}
             </button>
           </form>
         </div>

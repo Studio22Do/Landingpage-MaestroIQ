@@ -1,50 +1,37 @@
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 
-const pricingPlans = [
-  {
-    id: "allegro",
-    name: "Allegro",
-    monthlyPrice: "$19.95/month",
-    features: [
-      "10 apps included",
-      "Access to basic features",
-      "Email support",
-      "Monthly usage report",
-    ],
-    isPopular: false,
-  },
-  {
-    id: "andante",
-    name: "Andante",
-    monthlyPrice: "$39.95/month",
-    features: [
-      "15 apps included",
-      "Access to advanced features",
-      "Priority email support",
-      "Weekly usage insights",
-      "Early access to new features",
-    ],
-    isPopular: true,
-  },
-  {
-    id: "fortissimo",
-    name: "Fortissimo",
-    monthlyPrice: "$69.95/month",
-    features: [
-      "25 apps included",
-      "Full feature set",
-      "Dedicated account manager",
-      "Real-time analytics",
-    ],
-    isPopular: false,
-  },
-];
-
 const PricingSection = () => {
+  const { language } = useLanguage();
   const [isAnnual, setIsAnnual] = useState(false);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const pricingPlans = [
+    {
+      id: "allegro",
+      name: getTranslation(language, "pricing.plans.allegro.name"),
+      monthlyPrice: getTranslation(language, "pricing.plans.allegro.price"),
+      features: getTranslation(language, "pricing.plans.allegro.features"),
+      isPopular: false,
+    },
+    {
+      id: "andante",
+      name: getTranslation(language, "pricing.plans.andante.name"),
+      monthlyPrice: getTranslation(language, "pricing.plans.andante.price"),
+      features: getTranslation(language, "pricing.plans.andante.features"),
+      isPopular: true,
+    },
+    {
+      id: "fortissimo",
+      name: getTranslation(language, "pricing.plans.fortissimo.name"),
+      monthlyPrice: getTranslation(language, "pricing.plans.fortissimo.price"),
+      features: getTranslation(language, "pricing.plans.fortissimo.features"),
+      isPopular: false,
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,7 +74,7 @@ const PricingSection = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            Descubre herramientas poderosas
+            {getTranslation(language, "pricing.title")}
           </h2>
           <p
             className={`text-3xl font-medium text-white max-w-4xl mx-auto leading-relaxed transition-all ease-text-in ${
@@ -101,9 +88,7 @@ const PricingSection = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            Una consola centralizada de inteligencia y automatización diseñada
-            para optimizar tus operaciones, agilizar flujos de contenido y
-            ofrecerte insights que realmente impulsan decisiones.
+            {getTranslation(language, "pricing.description")}
           </p>
         </div>
 
@@ -126,9 +111,9 @@ const PricingSection = () => {
             className={`${
               !isAnnual ? "bg-primary" : ""
             }`}
-            aria-label="Plan mensual"
+            aria-label={getTranslation(language, "pricing.monthly")}
           >
-            Mensual
+            {getTranslation(language, "pricing.monthly")}
           </ButtonLarge>
           <ButtonLarge
             onClick={() => setIsAnnual(true)}
@@ -136,9 +121,9 @@ const PricingSection = () => {
             className={`${
               isAnnual ? "bg-primary" : ""
             }`}
-            aria-label="Plan anual"
+            aria-label={getTranslation(language, "pricing.annual")}
           >
-            Anual
+            {getTranslation(language, "pricing.annual")}
           </ButtonLarge>
         </div>
 
@@ -183,14 +168,14 @@ const PricingSection = () => {
                   variant="outline"
                   className="w-full h-20 rounded-[15px] bg-gradient-to-r from-secondary to-gradient-end border-0 hover:opacity-90"
                 >
-                  Adquirir Plan
+                  {getTranslation(language, "pricing.acquirePlan")}
                 </ButtonLarge>
               ) : (
                 <ButtonLarge
                   variant="outline"
                   className="w-full h-20 rounded-[15px] "
                 >
-                  Adquirir Plan
+                  {getTranslation(language, "pricing.acquirePlan")}
                 </ButtonLarge>
               )}
             </article>

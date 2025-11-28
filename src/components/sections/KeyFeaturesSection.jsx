@@ -1,29 +1,32 @@
 import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import shieldIcon from "../../assets/icons/feature-shield.svg";
 import laptopIcon from "../../assets/icons/feature-laptop.svg";
 import headsetIcon from "../../assets/icons/feature-headset.svg";
 
-const featureCards = [
-  {
-    id: "secure-data",
-    titleLines: ["Data", "Segura"],
-    icon: shieldIcon,
-  },
-  {
-    id: "easy-access",
-    titleLines: ["Fácil", "Acceso"],
-    icon: headsetIcon,
-  },
-  {
-    id: "support",
-    titleLines: ["Soporte", "24 horas"],
-    icon: laptopIcon,
-  },
-];
-
 const KeyFeaturesSection = () => {
+  const { language } = useLanguage();
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const featureCards = [
+    {
+      id: "secure-data",
+      titleLines: getTranslation(language, "keyFeatures.features.dataSegura.title"),
+      icon: shieldIcon,
+    },
+    {
+      id: "easy-access",
+      titleLines: getTranslation(language, "keyFeatures.features.facilAcceso.title"),
+      icon: headsetIcon,
+    },
+    {
+      id: "support",
+      titleLines: getTranslation(language, "keyFeatures.features.soporte24.title"),
+      icon: laptopIcon,
+    },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -55,54 +58,27 @@ const KeyFeaturesSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
           <h2 className="text-6xl font-bold leading-tight text-white overflow-hidden">
-            <span className="inline-block overflow-hidden">
-              <span
-                className={`inline-block transition-all ease-text-in ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[140%] opacity-0"
-                }`}
-                style={{
-                  transitionDuration: "0.6s",
-                  transitionDelay: "0s",
-                  transitionProperty: "transform, opacity",
-                }}
-              >
-                <span className="text-white">Simplifica.</span>
+            {getTranslation(language, "keyFeatures.title").split(" ").map((word, index) => (
+              <span key={index} className="inline-block overflow-hidden">
+                <span
+                  className={`inline-block transition-all ease-text-in ${
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[140%] opacity-0"
+                  }`}
+                  style={{
+                    transitionDuration: "0.6s",
+                    transitionDelay: `${index * 0.1}s`,
+                    transitionProperty: "transform, opacity",
+                  }}
+                >
+                  <span className={word.includes("Conecta") || word.includes("Connect") ? "text-primary" : "text-white"}>
+                    {word}
+                  </span>
+                  {index < getTranslation(language, "keyFeatures.title").split(" ").length - 1 && " "}
+                </span>
               </span>
-            </span>{" "}
-            <span className="inline-block overflow-hidden">
-              <span
-                className={`inline-block transition-all ease-text-in ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[140%] opacity-0"
-                }`}
-                style={{
-                  transitionDuration: "0.6s",
-                  transitionDelay: "0.1s",
-                  transitionProperty: "transform, opacity",
-                }}
-              >
-                <span className="text-primary">Conecta.</span>
-              </span>
-            </span>{" "}
-            <span className="inline-block overflow-hidden">
-              <span
-                className={`inline-block transition-all ease-text-in ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-[140%] opacity-0"
-                }`}
-                style={{
-                  transitionDuration: "0.6s",
-                  transitionDelay: "0.2s",
-                  transitionProperty: "transform, opacity",
-                }}
-              >
-                <span className="text-white">Optimiza.</span>
-              </span>
-            </span>
+            ))}
           </h2>
           <p
             className={`text-3xl max-w-4xl font-medium text-white mt-6 leading-relaxed transition-all ease-text-in ${
@@ -116,8 +92,8 @@ const KeyFeaturesSection = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            <span className="text-primary">Centraliza tus operaciones</span> de marketing y comunicación, integra herramientas
-            clave y transforma datos en decisiones inteligentes.
+            <span className="text-primary">{getTranslation(language, "keyFeatures.descriptionHighlight")}</span>{" "}
+            {getTranslation(language, "keyFeatures.description").replace(getTranslation(language, "keyFeatures.descriptionHighlight"), "").trim()}
           </p>
         </div>
 

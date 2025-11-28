@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import layerImage from "../../assets/Layer.png";
 
 const CustomPlanSection = () => {
+  const { language } = useLanguage();
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -233,8 +236,9 @@ const CustomPlanSection = () => {
                 opacity: titleCurrent.current.opacity,
               }}
             >
-              ¿Necesitas un plan{" "}
-              <span className="text-primary">personalizado?</span>
+              {language === "ES" ? "¿Necesitas un plan" : "Need a"}{" "}
+              <span className="text-primary">{getTranslation(language, "customPlan.titleHighlight")}</span>
+              {language === "ES" ? "?" : " plan?"}
             </h2>
 
             <p
@@ -245,8 +249,7 @@ const CustomPlanSection = () => {
                 opacity: descriptionCurrent.current.opacity,
               }}
             >
-              Reúne todo lo que necesitas en un solo espacio, una herramienta
-              clara, eficiente y flexible para gestionar como prefieras.
+              {getTranslation(language, "customPlan.description")}
             </p>
 
             <div
@@ -257,7 +260,7 @@ const CustomPlanSection = () => {
                 opacity: buttonCurrent.current.opacity,
               }}
             >
-              <ButtonLarge variant="outline">Empieza ya</ButtonLarge>
+              <ButtonLarge variant="outline">{getTranslation(language, "customPlan.button")}</ButtonLarge>
             </div>
           </div>
 

@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 const LanguageSwitcher = () => {
-  const [selectedLang, setSelectedLang] = useState("ES");
+  const { language, changeLanguage } = useLanguage();
 
   const handleLanguageChange = (lang) => {
-    setSelectedLang(lang);
-    // Aquí puedes agregar la lógica para cambiar el idioma
+    changeLanguage(lang);
   };
 
   return (
@@ -18,7 +17,7 @@ const LanguageSwitcher = () => {
             height: "32px",
             backgroundColor: "#502F7C",
             borderRadius: "0px 0px 6px 6px",
-            left: selectedLang === "EN" ? "0px" : "30px",
+            left: language === "EN" ? "0px" : "30px",
           }}
         />
         

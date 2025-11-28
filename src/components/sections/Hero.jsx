@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import heroImage from "../../assets/Group 237553.png";
 
 const Hero = () => {
+  const { language } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,7 +30,10 @@ const Hero = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            <span className="text-primary font-bold">Centraliza</span> todas tus tareas en un solo lugar
+            <span className="text-primary font-bold">{getTranslation(language, "hero.titleHighlight")}</span>{" "}
+            {language === "ES" 
+              ? "todas tus tareas en un solo lugar"
+              : "all your tasks in one place"}
           </h1>
 
           <p
@@ -42,8 +48,9 @@ const Hero = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            Una <span className="text-primary">aplicación simple, intuitiva y poderosa</span> para organizar tu
-            trabajo.
+            {getTranslation(language, "hero.description").split(getTranslation(language, "hero.descriptionHighlight"))[0]}
+            <span className="text-primary">{getTranslation(language, "hero.descriptionHighlight")}</span>
+            {getTranslation(language, "hero.description").split(getTranslation(language, "hero.descriptionHighlight"))[1]}
           </p>
 
           <div
@@ -58,7 +65,7 @@ const Hero = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            <ButtonLarge variant="outline">Empieza ya</ButtonLarge>
+            <ButtonLarge variant="outline">{getTranslation(language, "hero.button")}</ButtonLarge>
           </div>
         </div>
 
