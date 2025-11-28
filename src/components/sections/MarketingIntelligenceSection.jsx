@@ -1,11 +1,66 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.png";
 import tabletImage from "../../assets/Group 237552.png";
 
 const MarketingIntelligenceSection = () => {
   const sectionRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const imageRef = useRef(null);
+  const targetTranslateX = useRef(40); // Valor objetivo (usando ref para evitar problemas de closure)
+  const currentTranslateX = useRef(40); // Valor actual que se suaviza
+  const rafId = useRef(null);
+
+  // Función de interpolación lineal (lerp) para suavizar el movimiento
+  const lerp = (start, end, factor) => {
+    return start + (end - start) * factor;
+  };
+
+  // Calcular la posición X objetivo basada en el scroll
+  const calculateTargetTransform = (progress) => {
+    const maxOffset = 30;
+    const baseOffset = 10;
+    const visibleStart = 0.25;
+    const visibleEnd = 0.75;
+    let translateX = 0;
+    
+    if (progress < visibleStart) {
+      const normalizedProgress = progress / visibleStart;
+      translateX = baseOffset + (1 - normalizedProgress) * maxOffset;
+    } else if (progress > visibleEnd) {
+      const normalizedProgress = (progress - visibleEnd) / (1 - visibleEnd);
+      translateX = baseOffset + normalizedProgress * maxOffset;
+    } else {
+      translateX = baseOffset;
+    }
+    
+    return translateX;
+  };
+
+  // Función de animación suave usando requestAnimationFrame
+  const animate = () => {
+    // Factor de suavizado (0.08 = más suave pero más lento, 0.15 = más rápido pero menos suave)
+    // Similar al scrub de GSAP, valores más bajos = más suave
+    const smoothFactor = 0.08;
+    
+    // Interpolar el valor actual hacia el objetivo
+    currentTranslateX.current = lerp(
+      currentTranslateX.current,
+      targetTranslateX.current,
+      smoothFactor
+    );
+
+    // Aplicar la transformación directamente al DOM
+    if (imageRef.current) {
+      imageRef.current.style.transform = `translateX(${currentTranslateX.current}%)`;
+    }
+
+    // Continuar animando si la diferencia es significativa
+    if (Math.abs(currentTranslateX.current - targetTranslateX.current) > 0.01) {
+      rafId.current = requestAnimationFrame(animate);
+    } else {
+      rafId.current = null; // Limpiar el ID cuando termine
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,59 +69,37 @@ const MarketingIntelligenceSection = () => {
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const windowCenter = windowHeight / 2;
       
-      // Calcular el progreso basado en la posición del centro de la sección
       const sectionCenter = rect.top + rect.height / 2;
-      
-      // La animación debe comenzar cuando la sección empieza a entrar en el viewport
-      // y terminar cuando sale completamente
-      // Ajustado para que la animación comience más tarde y se vea más del recorrido
-      const animationStart = windowHeight * 1.3; // Comienza cuando la sección está más visible
-      const animationEnd = -windowHeight * 0.3; // Termina después de que salga
+      const animationStart = windowHeight * 1.3;
+      const animationEnd = -windowHeight * 0.3;
       const animationRange = animationStart - animationEnd;
       
-      // Calcular progreso: 0 cuando empieza a entrar, 0.5 cuando está centrada, 1 cuando sale
       const progress = Math.max(0, Math.min(1, 
         (animationStart - sectionCenter) / animationRange
       ));
       
-      setScrollProgress(progress);
+      // Calcular el valor objetivo
+      const target = calculateTargetTransform(progress);
+      targetTranslateX.current = target;
+
+      // Iniciar la animación suave si no está corriendo
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(animate);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Llamar una vez al montar
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+        rafId.current = null;
+      }
+    };
   }, []);
-
-  // Calcular la posición X de la imagen basada en el progreso
-  // Crear un rango amplio donde la imagen esté completamente visible
-  // La imagen debe estar más a la derecha por defecto, cortándose un poco
-  const getImageTransform = () => {
-    const maxOffset = 30; // Aumentado para que la imagen empiece más a la derecha
-    const baseOffset = 10; // Offset base hacia la derecha cuando está más visible
-    const visibleStart = 0.25; // Comienza a estar completamente visible
-    const visibleEnd = 0.75; // Termina de estar completamente visible
-    let translateX = 0;
-    
-    if (scrollProgress < visibleStart) {
-      // Primera parte: moverse desde más fuera (derecha) hacia la posición base
-      // progress 0 -> translateX máximo (30% + baseOffset), progress 0.25 -> translateX baseOffset
-      const progress = scrollProgress / visibleStart; // Normalizar de 0-0.25 a 0-1
-      translateX = baseOffset + (1 - progress) * maxOffset; // (baseOffset + 30%) a baseOffset
-    } else if (scrollProgress > visibleEnd) {
-      // Última parte: moverse desde la posición base hacia más fuera (derecha)
-      // progress 0.75 -> translateX baseOffset, progress 1 -> translateX máximo (30% + baseOffset)
-      const progress = (scrollProgress - visibleEnd) / (1 - visibleEnd); // Normalizar de 0.75-1 a 0-1
-      translateX = baseOffset + progress * maxOffset; // baseOffset a (baseOffset + 30%)
-    } else {
-      // Zona media: imagen en posición base (más a la derecha, cortándose un poco)
-      translateX = baseOffset;
-    }
-    
-    return translateX;
-  };
 
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
@@ -99,9 +132,10 @@ const MarketingIntelligenceSection = () => {
 
           {/* Lado derecho - imagen de la tablet */}
           <div 
-            className="flex justify-center lg:justify-end relative"
+            ref={imageRef}
+            className="flex justify-center lg:justify-end relative transition-none"
             style={{ 
-              transform: `translateX(${getImageTransform()}%)`,
+              transform: `translateX(${currentTranslateX.current}%)`,
             }}
           >
             <img 
