@@ -44,7 +44,7 @@ const Hero = () => {
             }`}
             style={{
               transitionDuration: "0.6s",
-              transitionDelay: "0.2s",
+              transitionDelay: "0.3s",
               transitionProperty: "transform, opacity",
             }}
           >
@@ -61,7 +61,7 @@ const Hero = () => {
             }`}
             style={{
               transitionDuration: "0.6s",
-              transitionDelay: "0.4s",
+              transitionDelay: "0.5s",
               transitionProperty: "transform, opacity",
             }}
           >
@@ -81,7 +81,7 @@ const Hero = () => {
             }`}
             style={{
               transitionDuration: "0.8s",
-              transitionDelay: "0.3s",
+              transitionDelay: "0.5s",
               transitionProperty: "transform, opacity",
             }}
           />
