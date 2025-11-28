@@ -4,15 +4,19 @@ import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.png";
 import tabletImage from "../../assets/Group 237552.png";
+import blobSvg from "../../assets/Blob.svg";
 
 const MarketingIntelligenceSection = () => {
   const { language } = useLanguage();
   const sectionRef = useRef(null);
   const imageRef = useRef(null);
+  const blobContainerRef = useRef(null);
   const textContainerRef = useRef(null);
   const [isTextVisible, setIsTextVisible] = useState(false);
   const targetTranslateX = useRef(40); // Valor objetivo (usando ref para evitar problemas de closure)
   const currentTranslateX = useRef(40); // Valor actual que se suaviza
+  const blobParallaxY = useRef(0); // Parallax Y para el blob
+  const blobCurrentY = useRef(0); // Valor actual del parallax Y
   const rafId = useRef(null);
 
   // Función de interpolación lineal (lerp) para suavizar el movimiento
@@ -54,13 +58,29 @@ const MarketingIntelligenceSection = () => {
       smoothFactor
     );
 
+    // Interpolar el parallax del blob
+    blobCurrentY.current = lerp(
+      blobCurrentY.current,
+      blobParallaxY.current,
+      smoothFactor
+    );
+
     // Aplicar la transformación directamente al DOM
     if (imageRef.current) {
       imageRef.current.style.transform = `translateX(${currentTranslateX.current}%)`;
     }
 
-    // Continuar animando si la diferencia es significativa
-    if (Math.abs(currentTranslateX.current - targetTranslateX.current) > 0.01) {
+    // Aplicar parallax al contenedor del blob (para no interferir con la animación CSS)
+    if (blobContainerRef.current) {
+      blobContainerRef.current.style.transform = `translateY(${blobCurrentY.current}px)`;
+    }
+
+    // Continuar animando si hay diferencias significativas
+    const needsUpdate = 
+      Math.abs(currentTranslateX.current - targetTranslateX.current) > 0.01 ||
+      Math.abs(blobCurrentY.current - blobParallaxY.current) > 0.01;
+
+    if (needsUpdate) {
       rafId.current = requestAnimationFrame(animate);
     } else {
       rafId.current = null; // Limpiar el ID cuando termine
@@ -114,6 +134,19 @@ const MarketingIntelligenceSection = () => {
       const target = calculateTargetTransform(progress);
       targetTranslateX.current = target;
 
+      // Calcular parallax del blob (se mueve más lento que el scroll)
+      const parallaxSpeed = 0.3; // Velocidad del parallax (0.3 = se mueve más lento)
+      
+      // Calcular el parallax basado en la posición de la sección en el viewport
+      // Cuando haces scroll hacia abajo, el blob debe subir (moverse hacia arriba)
+      const sectionTop = rect.top;
+      const viewportCenter = windowHeight / 2;
+      
+      // Calcular el offset del parallax: cuando haces scroll hacia abajo, el blob se mueve hacia arriba
+      // Invertimos el signo para que el blob suba cuando haces scroll hacia abajo
+      const parallaxOffset = (sectionTop - viewportCenter) * parallaxSpeed;
+      blobParallaxY.current = parallaxOffset;
+
       // Iniciar la animación suave si no está corriendo
       if (!rafId.current) {
         rafId.current = requestAnimationFrame(animate);
@@ -138,6 +171,24 @@ const MarketingIntelligenceSection = () => {
         className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full"
         style={{ backgroundImage: `url(${vectorBg})` }}
       />
+      {/* Blob de fondo con animación de flotamiento y parallax */}
+      <div 
+        ref={blobContainerRef}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-5"
+      >
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[481px] h-[488px] opacity-100"
+          style={{
+            position: "absolute",
+            top: "30%",
+            left: "40%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
       <div
         className="relative z-10 py-80 xl:py-[30rem] flex items-center justify-center pl-4 sm:pl-6 w-full overflow-hidden"
         style={{ minHeight: "100vh" }}
