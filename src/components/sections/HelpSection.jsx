@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
+import blobSvg from "../../assets/Blob.svg";
 
 const HelpSection = () => {
   const { language } = useLanguage();
@@ -41,8 +42,23 @@ const HelpSection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="ayuda" className="py-40 scroll-mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} id="ayuda" className="py-40 scroll-mt-24 relative overflow-hidden">
+      {/* Blob de fondo con animación de flotamiento */}
+      <div className="absolute inset-0 flex items-end justify-end pointer-events-none z-0">
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[281px] h-[288px] opacity-100"
+          style={{
+            position: "absolute",
+            bottom: "5%",
+            right: "-8%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center overflow-hidden">
           <h2
             className={`text-6xl font-bold text-white mb-8 transition-all ease-text-in ${
