@@ -54,12 +54,68 @@ const KeyFeaturesSection = () => {
     <section ref={sectionRef} id="funciones" className="py-40 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 justify-center items-center flex flex-col">
         <div className="max-w-6xl mx-auto text-center mb-20 justify-center items-center flex flex-col">
-          <h2 className="text-6xl font-bold leading-tight text-white">
-            <span className="text-white">Simplifica.</span>{" "}
-            <span className="text-primary">Conecta.</span>{" "}
-            <span className="text-white">Optimiza.</span>
+          <h2 className="text-6xl font-bold leading-tight text-white overflow-hidden">
+            <span className="inline-block overflow-hidden">
+              <span
+                className={`inline-block transition-all ease-text-in ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[140%] opacity-0"
+                }`}
+                style={{
+                  transitionDuration: "0.6s",
+                  transitionDelay: "0s",
+                  transitionProperty: "transform, opacity",
+                }}
+              >
+                <span className="text-white">Simplifica.</span>
+              </span>
+            </span>{" "}
+            <span className="inline-block overflow-hidden">
+              <span
+                className={`inline-block transition-all ease-text-in ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[140%] opacity-0"
+                }`}
+                style={{
+                  transitionDuration: "0.6s",
+                  transitionDelay: "0.1s",
+                  transitionProperty: "transform, opacity",
+                }}
+              >
+                <span className="text-primary">Conecta.</span>
+              </span>
+            </span>{" "}
+            <span className="inline-block overflow-hidden">
+              <span
+                className={`inline-block transition-all ease-text-in ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[140%] opacity-0"
+                }`}
+                style={{
+                  transitionDuration: "0.6s",
+                  transitionDelay: "0.2s",
+                  transitionProperty: "transform, opacity",
+                }}
+              >
+                <span className="text-white">Optimiza.</span>
+              </span>
+            </span>
           </h2>
-          <p className="text-3xl max-w-4xl font-medium text-white mt-6 leading-relaxed">
+          <p
+            className={`text-3xl max-w-4xl font-medium text-white mt-6 leading-relaxed transition-all ease-text-in ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-[140%] opacity-0"
+            }`}
+            style={{
+              transitionDuration: "0.6s",
+              transitionDelay: "0.4s",
+              transitionProperty: "transform, opacity",
+            }}
+          >
             <span className="text-primary">Centraliza tus operaciones</span> de marketing y comunicación, integra herramientas
             clave y transforma datos en decisiones inteligentes.
           </p>
@@ -69,13 +125,13 @@ const KeyFeaturesSection = () => {
           {featureCards.map(({ id, titleLines, icon }, index) => (
             <article
               key={id}
-              className={`rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center flex flex-col items-center gap-6 transition-all duration-900 ease-out ${
+              className={`rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center flex flex-col items-center gap-6 transition-all duration-700 ease-out ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
               }`}
               style={{
-                transitionDelay: isVisible ? `${index * 240}ms` : "0ms",
+                transitionDelay: isVisible ? `${600 + index * 150}ms` : "0ms",
               }}
               aria-label={`Beneficio: ${titleLines.join(" ")}`}
             >
