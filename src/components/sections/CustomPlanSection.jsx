@@ -120,7 +120,7 @@ const CustomPlanSection = () => {
   const calculateTargets = (progress) => {
     const maxOffset = -100; // Desde la izquierda
     const visibleStart = 0.2;
-    const visibleEnd = 0.8;
+    const visibleEnd = 0.9; // Aumentado para que la animación de salida comience más tarde
 
     let translateX = maxOffset;
     let opacity = 0;
@@ -150,7 +150,7 @@ const CustomPlanSection = () => {
   const calculateImageTargets = (progress) => {
     const maxOffset = 100; // Desde la derecha
     const visibleStart = 0.2;
-    const visibleEnd = 0.8;
+    const visibleEnd = 0.95; // Aumentado para que la animación de salida comience más tarde
 
     let translateX = maxOffset;
     let opacity = 0;
@@ -194,10 +194,48 @@ const CustomPlanSection = () => {
       const progress = Math.max(0, Math.min(1, (animationStart - sectionTop) / animationRange));
 
       // Calcular valores objetivo para cada elemento con delays
-      const titleProgress = Math.max(0, Math.min(1, progress));
-      const descriptionProgress = Math.max(0, Math.min(1, progress - 0.1));
-      const buttonProgress = Math.max(0, Math.min(1, progress - 0.2));
-      const imageProgress = Math.max(0, Math.min(1, progress - 0.1)); // Delay similar a descripción
+      const visibleEnd = 0.9;
+      const visibleStart = 0.2;
+      
+      // Durante la entrada: delays normales
+      let titleProgress = Math.max(0, Math.min(1, progress));
+      let descriptionProgress = Math.max(0, Math.min(1, progress - 0.1));
+      let buttonProgress = Math.max(0, Math.min(1, progress - 0.2));
+      let imageProgress = Math.max(0, Math.min(1, progress - 0.1));
+
+      // Durante la salida: ajustar para que salgan con retraso secuencial
+      if (progress > visibleEnd) {
+        // Si el progreso ha llegado a 1 o muy cerca, forzar todos a estar completamente ocultos
+        if (progress >= 0.99) {
+          titleProgress = 1;
+          descriptionProgress = 1;
+          buttonProgress = 1;
+          imageProgress = 1;
+        } else {
+          // Calcular cuánto ha avanzado la salida (0 a 1)
+          const exitProgress = (progress - visibleEnd) / (1 - visibleEnd);
+          // Aplicar delays durante la salida
+          const exitDelay = 0.15; // Delay entre cada elemento al salir
+          
+          // Calcular el progreso de salida para cada elemento con delays
+          const titleExitProgress = Math.min(1, exitProgress);
+          const descriptionExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay));
+          const buttonExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay * 2));
+          const imageExitProgress = Math.min(1, Math.max(0, exitProgress - exitDelay));
+          
+          // Aplicar el progreso de salida al progreso total
+          titleProgress = visibleEnd + titleExitProgress * (1 - visibleEnd);
+          descriptionProgress = visibleEnd + descriptionExitProgress * (1 - visibleEnd);
+          buttonProgress = visibleEnd + buttonExitProgress * (1 - visibleEnd);
+          imageProgress = visibleEnd + imageExitProgress * (1 - visibleEnd);
+          
+          // Asegurar que no excedan 1
+          titleProgress = Math.min(1, titleProgress);
+          descriptionProgress = Math.min(1, descriptionProgress);
+          buttonProgress = Math.min(1, buttonProgress);
+          imageProgress = Math.min(1, imageProgress);
+        }
+      }
 
       titleTarget.current = calculateTargets(titleProgress);
       descriptionTarget.current = calculateTargets(descriptionProgress);
