@@ -171,12 +171,22 @@ const MarketingIntelligenceSection = () => {
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
       {/* Background para móvil */}
-      <div className="absolute inset-0 w-full sm:hidden overflow-hidden">
+      <div className="absolute inset-0 w-full sm:hidden overflow-hidden" style={{ background: 'transparent' }}>
         <img 
           src={bgMovil} 
           alt="" 
           className="w-full h-full object-cover object-center"
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%',
+            border: 'none',
+            outline: 'none',
+            background: 'transparent',
+            display: 'block'
+          }}
           aria-hidden="true"
         />
       </div>

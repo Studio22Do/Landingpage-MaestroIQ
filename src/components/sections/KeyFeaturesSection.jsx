@@ -111,7 +111,7 @@ const KeyFeaturesSection = () => {
           {featureCards.map(({ id, titleLines, icon }, index) => (
             <article
               key={id}
-              className={`rounded-[24px] sm:rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-6 sm:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.35)] text-center flex flex-col items-center gap-4 sm:gap-6 transition-all duration-700 ease-out ${
+              className={`rounded-[24px] sm:rounded-[32px] border-2 border-primary/50 bg-gradient-to-br from-[#2D2350] to-[#1B1630] p-6 sm:p-8 text-center flex flex-col items-center gap-4 sm:gap-6 transition-all duration-700 ease-out ${
                 index === 2 ? 'md:col-span-2 md:col-start-1 md:justify-self-center md:w-[calc(50%-0.75rem)] lg:col-span-1 lg:col-start-auto lg:justify-self-auto lg:w-auto' : ''
               } ${
                 isVisible
