@@ -5,7 +5,6 @@ import ButtonLarge from "../ui/ButtonLarge";
 
 const PricingSection = () => {
   const { language } = useLanguage();
-  const [isAnnual, setIsAnnual] = useState(false);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -90,41 +89,6 @@ const PricingSection = () => {
           >
             {getTranslation(language, "pricing.description")}
           </p>
-        </div>
-
-        {/* Toggle Mensual/Anual */}
-        <div
-          className={`flex justify-center gap-3 sm:gap-4 mb-8 sm:mb-12 transition-all ease-text-in ${
-            isVisible
-              ? "translate-y-0 opacity-100"
-              : "translate-y-[140%] opacity-0"
-          }`}
-          style={{
-            transitionDuration: "0.6s",
-            transitionDelay: "0.4s",
-            transitionProperty: "transform, opacity",
-          }}
-        >
-          <ButtonLarge
-            onClick={() => setIsAnnual(false)}
-            variant={!isAnnual ? "primary" : "outline"}
-            className={`text-base sm:text-lg md:text-xl lg:text-2xl px-6 sm:px-8 md:px-12 lg:px-16 py-2 sm:py-3 md:py-4 ${
-              !isAnnual ? "bg-primary" : ""
-            }`}
-            aria-label={getTranslation(language, "pricing.monthly")}
-          >
-            {getTranslation(language, "pricing.monthly")}
-          </ButtonLarge>
-          <ButtonLarge
-            onClick={() => setIsAnnual(true)}
-            variant={isAnnual ? "primary" : "outline"}
-            className={`text-base sm:text-lg md:text-xl lg:text-2xl px-6 sm:px-8 md:px-12 lg:px-16 py-2 sm:py-3 md:py-4 ${
-              isAnnual ? "bg-primary" : ""
-            }`}
-            aria-label={getTranslation(language, "pricing.annual")}
-          >
-            {getTranslation(language, "pricing.annual")}
-          </ButtonLarge>
         </div>
 
         {/* Tarjetas de planes */}
