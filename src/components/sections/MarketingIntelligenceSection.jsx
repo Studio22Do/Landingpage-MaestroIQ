@@ -1,11 +1,117 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
-import vectorBg from "../../assets/Vectorbg.png";
+import vectorBg from "../../assets/Vectorbg.webp";
 import tabletImage from "../../assets/Group 237552.png";
+import blobSvg from "../../assets/Blob.svg";
 
 const MarketingIntelligenceSection = () => {
+  const { language } = useLanguage();
   const sectionRef = useRef(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const imageRef = useRef(null);
+  const blobContainerRef = useRef(null);
+  const textContainerRef = useRef(null);
+  const [isTextVisible, setIsTextVisible] = useState(false);
+  const targetTranslateX = useRef(40); // Valor objetivo (usando ref para evitar problemas de closure)
+  const currentTranslateX = useRef(40); // Valor actual que se suaviza
+  const blobParallaxY = useRef(0); // Parallax Y para el blob
+  const blobCurrentY = useRef(0); // Valor actual del parallax Y
+  const rafId = useRef(null);
+
+  // Función de interpolación lineal (lerp) para suavizar el movimiento
+  const lerp = (start, end, factor) => {
+    return start + (end - start) * factor;
+  };
+
+  // Calcular la posición X objetivo basada en el scroll
+  const calculateTargetTransform = (progress) => {
+    const maxOffset = 30;
+    const baseOffset = 10;
+    const visibleStart = 0.25;
+    const visibleEnd = 0.75;
+    let translateX = 0;
+    
+    if (progress < visibleStart) {
+      const normalizedProgress = progress / visibleStart;
+      translateX = baseOffset + (1 - normalizedProgress) * maxOffset;
+    } else if (progress > visibleEnd) {
+      const normalizedProgress = (progress - visibleEnd) / (1 - visibleEnd);
+      translateX = baseOffset + normalizedProgress * maxOffset;
+    } else {
+      translateX = baseOffset;
+    }
+    
+    return translateX;
+  };
+
+  // Función de animación suave usando requestAnimationFrame
+  const animate = () => {
+    // Factor de suavizado (0.08 = más suave pero más lento, 0.15 = más rápido pero menos suave)
+    // Similar al scrub de GSAP, valores más bajos = más suave
+    const smoothFactor = 0.08;
+    
+    // Interpolar el valor actual hacia el objetivo
+    currentTranslateX.current = lerp(
+      currentTranslateX.current,
+      targetTranslateX.current,
+      smoothFactor
+    );
+
+    // Interpolar el parallax del blob
+    blobCurrentY.current = lerp(
+      blobCurrentY.current,
+      blobParallaxY.current,
+      smoothFactor
+    );
+
+    // Aplicar la transformación directamente al DOM
+    if (imageRef.current) {
+      imageRef.current.style.transform = `translateX(${currentTranslateX.current}%)`;
+    }
+
+    // Aplicar parallax al contenedor del blob (para no interferir con la animación CSS)
+    if (blobContainerRef.current) {
+      blobContainerRef.current.style.transform = `translateY(${blobCurrentY.current}px)`;
+    }
+
+    // Continuar animando si hay diferencias significativas
+    const needsUpdate = 
+      Math.abs(currentTranslateX.current - targetTranslateX.current) > 0.01 ||
+      Math.abs(blobCurrentY.current - blobParallaxY.current) > 0.01;
+
+    if (needsUpdate) {
+      rafId.current = requestAnimationFrame(animate);
+    } else {
+      rafId.current = null; // Limpiar el ID cuando termine
+    }
+  };
+
+  // Observer para detectar cuando la sección entra en el viewport y activar animación de texto
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsTextVisible(true);
+          }
+        });
+      },
+      {
+        threshold: 0.3, // Se activa cuando el 30% de la sección es visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,59 +120,50 @@ const MarketingIntelligenceSection = () => {
       const section = sectionRef.current;
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const windowCenter = windowHeight / 2;
       
-      // Calcular el progreso basado en la posición del centro de la sección
       const sectionCenter = rect.top + rect.height / 2;
-      
-      // La animación debe comenzar cuando la sección empieza a entrar en el viewport
-      // y terminar cuando sale completamente
-      // Ajustado para que la animación comience más tarde y se vea más del recorrido
-      const animationStart = windowHeight * 1.3; // Comienza cuando la sección está más visible
-      const animationEnd = -windowHeight * 0.3; // Termina después de que salga
+      const animationStart = windowHeight * 1.3;
+      const animationEnd = -windowHeight * 0.3;
       const animationRange = animationStart - animationEnd;
       
-      // Calcular progreso: 0 cuando empieza a entrar, 0.5 cuando está centrada, 1 cuando sale
       const progress = Math.max(0, Math.min(1, 
         (animationStart - sectionCenter) / animationRange
       ));
       
-      setScrollProgress(progress);
+      // Calcular el valor objetivo
+      const target = calculateTargetTransform(progress);
+      targetTranslateX.current = target;
+
+      // Calcular parallax del blob (se mueve más lento que el scroll)
+      const parallaxSpeed = 0.3; // Velocidad del parallax (0.3 = se mueve más lento)
+      
+      // Calcular el parallax basado en la posición de la sección en el viewport
+      // Cuando haces scroll hacia abajo, el blob debe subir (moverse hacia arriba)
+      const sectionTop = rect.top;
+      const viewportCenter = windowHeight / 2;
+      
+      // Calcular el offset del parallax: cuando haces scroll hacia abajo, el blob se mueve hacia arriba
+      // Invertimos el signo para que el blob suba cuando haces scroll hacia abajo
+      const parallaxOffset = (sectionTop - viewportCenter) * parallaxSpeed;
+      blobParallaxY.current = parallaxOffset;
+
+      // Iniciar la animación suave si no está corriendo
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(animate);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Llamar una vez al montar
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+        rafId.current = null;
+      }
+    };
   }, []);
-
-  // Calcular la posición X de la imagen basada en el progreso
-  // Crear un rango amplio donde la imagen esté completamente visible
-  // La imagen debe estar más a la derecha por defecto, cortándose un poco
-  const getImageTransform = () => {
-    const maxOffset = 30; // Aumentado para que la imagen empiece más a la derecha
-    const baseOffset = 10; // Offset base hacia la derecha cuando está más visible
-    const visibleStart = 0.25; // Comienza a estar completamente visible
-    const visibleEnd = 0.75; // Termina de estar completamente visible
-    let translateX = 0;
-    
-    if (scrollProgress < visibleStart) {
-      // Primera parte: moverse desde más fuera (derecha) hacia la posición base
-      // progress 0 -> translateX máximo (30% + baseOffset), progress 0.25 -> translateX baseOffset
-      const progress = scrollProgress / visibleStart; // Normalizar de 0-0.25 a 0-1
-      translateX = baseOffset + (1 - progress) * maxOffset; // (baseOffset + 30%) a baseOffset
-    } else if (scrollProgress > visibleEnd) {
-      // Última parte: moverse desde la posición base hacia más fuera (derecha)
-      // progress 0.75 -> translateX baseOffset, progress 1 -> translateX máximo (30% + baseOffset)
-      const progress = (scrollProgress - visibleEnd) / (1 - visibleEnd); // Normalizar de 0.75-1 a 0-1
-      translateX = baseOffset + progress * maxOffset; // baseOffset a (baseOffset + 30%)
-    } else {
-      // Zona media: imagen en posición base (más a la derecha, cortándose un poco)
-      translateX = baseOffset;
-    }
-    
-    return translateX;
-  };
 
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
@@ -74,34 +171,84 @@ const MarketingIntelligenceSection = () => {
         className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full"
         style={{ backgroundImage: `url(${vectorBg})` }}
       />
+      {/* Blob de fondo con animación de flotamiento y parallax */}
+      <div 
+        ref={blobContainerRef}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-5"
+      >
+        <img
+          src={blobSvg}
+          alt=""
+          className="floating-blob w-[481px] h-[488px] opacity-100"
+          style={{
+            position: "absolute",
+            top: "30%",
+            left: "40%",
+            transform: "translate(-50%, -50%)",
+          }}
+          aria-hidden="true"
+        />
+      </div>
       <div
         className="relative z-10 py-80 xl:py-[30rem] flex items-center justify-center pl-4 sm:pl-6 w-full overflow-hidden"
         style={{ minHeight: "100vh" }}
       >
         <div className=" pl-24 flex flex-col lg:flex-row gap-12 items-center justify-between w-full">
           {/* Contenido del lado izquierdo */}
-          <div className="text-center lg:text-left w-9/12">
-            <h2 className="text-6xl font-bold leading-tight mb-8 text-white ">
-              <span className="text-primary">Unifica</span> tus herramientas.{" "}
-              <span className="text-primary">Multiplica</span> tu impacto.
+          <div ref={textContainerRef} className="text-center lg:text-left w-9/12 overflow-hidden">
+            <h2 className="text-6xl font-bold leading-tight mb-8 text-white">
+              <span className="inline-block overflow-hidden">
+                <span
+                  className={`inline-block transition-all ease-text-in ${
+                    isTextVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[140%] opacity-0"
+                  }`}
+                  style={{ 
+                    transitionDuration: "0.6s",
+                    transitionDelay: "0s",
+                    transitionProperty: "transform, opacity"
+                  }}
+                >
+                  <span className="text-primary">{getTranslation(language, "marketingIntelligence.titleHighlight1")}</span>{" "}
+                  {language === "ES" ? "tus herramientas." : "your tools."}
+                </span>
+              </span>
+              <span className="inline-block overflow-hidden">
+                <span
+                  className={`inline-block transition-all ease-text-in ${
+                    isTextVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-[140%] opacity-0"
+                  }`}
+                  style={{ 
+                    transitionDuration: "0.6s",
+                    transitionDelay: "0.15s",
+                    transitionProperty: "transform, opacity"
+                  }}
+                >
+                  {" "}
+                  <span className="text-primary">{getTranslation(language, "marketingIntelligence.titleHighlight2")}</span>{" "}
+                  {language === "ES" ? "tu impacto." : "your impact."}
+                </span>
+              </span>
             </h2>
 
             <p className="text-3xl font-medium text-white mb-12 leading-relaxed">
-              Accede a información clave en medios, marketing y análisis de
-              mercado para impulsar decisiones estratégicas más rápidas y
-              efectivas.
+              {getTranslation(language, "marketingIntelligence.description")}
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <ButtonLarge variant="outline">Regístrate</ButtonLarge>
+              <ButtonLarge variant="outline">{getTranslation(language, "marketingIntelligence.button")}</ButtonLarge>
             </div>
           </div>
 
           {/* Lado derecho - imagen de la tablet */}
           <div 
-            className="flex justify-center lg:justify-end relative"
+            ref={imageRef}
+            className="flex justify-center lg:justify-end relative transition-none"
             style={{ 
-              transform: `translateX(${getImageTransform()}%)`,
+              transform: `translateX(${currentTranslateX.current}%)`,
             }}
           >
             <img 

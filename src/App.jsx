@@ -1,3 +1,4 @@
+import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import Hero from './components/sections/Hero'
@@ -9,25 +10,27 @@ import HelpSection from './components/sections/HelpSection'
 
 const App = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      
-      <main className="pt-16">
-        <Hero />
+    <LanguageProvider>
+      <div className="min-h-screen">
+        <Header />
+        
+        <main className="pt-16">
+          <Hero />
 
-        <KeyFeaturesSection />
+          <KeyFeaturesSection />
 
-        <MarketingIntelligenceSection />
+          <MarketingIntelligenceSection />
 
-        <PricingSection />
+          <PricingSection />
 
-        <CustomPlanSection />
+          <CustomPlanSection />
 
-        <HelpSection />
-      </main>
+          <HelpSection />
+        </main>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </LanguageProvider>
   )
 }
 

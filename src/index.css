@@ -35,3 +35,53 @@ body {
 * {
   font-family: 'Futura', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
+
+/* Easing personalizado para animaciones de texto */
+@layer utilities {
+  .ease-text-in {
+    transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  }
+}
+
+/* Animación de flotamiento para el blob */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  66% {
+    transform: translateY(10px) translateX(-15px);
+  }
+}
+
+.floating-blob {
+  animation: float 6s ease-in-out infinite;
+}
+/* Estilos personalizados para la scrollbar */
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.801);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #837CF3;
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.801);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9256E2;
+}
+
+/* Firefox */
+* {
+  
+  scrollbar-color: #837CF3 rgba(0, 0, 0, 0.801);
+}
