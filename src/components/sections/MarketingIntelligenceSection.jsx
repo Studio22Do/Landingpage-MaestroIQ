@@ -66,9 +66,11 @@ const MarketingIntelligenceSection = () => {
       smoothFactor
     );
 
-    // Aplicar la transformación directamente al DOM
-    if (imageRef.current) {
+    // Aplicar la transformación directamente al DOM (solo en desktop)
+    if (imageRef.current && window.innerWidth >= 1024) {
       imageRef.current.style.transform = `translateX(${currentTranslateX.current}%)`;
+    } else if (imageRef.current) {
+      imageRef.current.style.transform = 'none';
     }
 
     // Aplicar parallax al contenedor del blob (para no interferir con la animación CSS)
@@ -253,7 +255,7 @@ const MarketingIntelligenceSection = () => {
           {/* Lado derecho - imagen de la tablet */}
           <div 
             ref={imageRef}
-            className="flex justify-center lg:justify-end relative transition-none w-full lg:w-auto order-1 lg:order-2"
+            className="flex justify-center relative transition-none w-full lg:w-auto order-1 lg:order-2"
             style={{ 
               transform: `translateX(${currentTranslateX.current}%)`,
             }}
@@ -261,7 +263,7 @@ const MarketingIntelligenceSection = () => {
             <img 
               src={tabletImage} 
               alt="Marketing Intelligence Console" 
-              className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-5xl h-auto"
+              className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-5xl h-auto mx-auto"
             />
           </div>
         </div>
