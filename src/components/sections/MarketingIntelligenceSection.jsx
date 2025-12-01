@@ -3,7 +3,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.webp";
-import bgMovil from "../../assets/bgmovil.png";
+import bgMovil from "../../assets/bgmovil.svg";
 import tabletImage from "../../assets/Group 237552.png";
 import blobSvg from "../../assets/Blob.svg";
 
@@ -171,14 +171,15 @@ const MarketingIntelligenceSection = () => {
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
       {/* Background para móvil */}
-      <div
-        className="absolute inset-0 bg-no-repeat w-full sm:hidden "
-        style={{ 
-          backgroundImage: `url(${bgMovil})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-        }}
-      />
+      <div className="absolute inset-0 w-full sm:hidden overflow-hidden">
+        <img 
+          src={bgMovil} 
+          alt="" 
+          className="w-full h-full object-cover object-center"
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          aria-hidden="true"
+        />
+      </div>
       {/* Background para desktop */}
       <div
         className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full hidden sm:block"
