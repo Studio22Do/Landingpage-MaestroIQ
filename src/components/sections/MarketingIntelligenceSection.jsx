@@ -170,7 +170,7 @@ const MarketingIntelligenceSection = () => {
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
       {/* Background para móvil */}
       <div
-        className="absolute inset-0 bg-no-repeat w-full sm:hidden h-[150vh]"
+        className="absolute inset-0 bg-no-repeat w-full sm:hidden "
         style={{ 
           backgroundImage: `url(${bgMovil})`,
           backgroundSize: 'cover',
@@ -195,7 +195,7 @@ const MarketingIntelligenceSection = () => {
         />
       </div>
       <div
-        className="relative z-10 py-[13rem] lg:py-40 xl:py-80 2xl:py-[30rem] flex items-center justify-center px-4 sm:px-6 lg:pl-24 w-full overflow-hidden"
+        className="relative z-10 py-[9rem] lg:py-40 xl:py-80 2xl:py-[30rem] flex items-center justify-center px-4 sm:px-6 lg:pl-24 w-full overflow-hidden"
         style={{ minHeight: "100vh" }}
       >
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-center lg:justify-between w-full max-w-7xl mx-auto">
