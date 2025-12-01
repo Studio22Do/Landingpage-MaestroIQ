@@ -133,6 +133,8 @@ const PricingSection = () => {
             <article
               key={plan.id}
               className={`rounded-[24px] sm:rounded-[30px] bg-gradient-to-br from-[#342A5B] to-[#201C2E] p-6 sm:p-8 flex flex-col transition-all duration-700 ease-out ${
+                index === 2 ? 'md:col-span-2 md:col-start-1 md:justify-self-center md:w-[calc(50%-0.75rem)] lg:col-span-1 lg:col-start-auto lg:justify-self-auto lg:w-auto' : ''
+              } ${
                 plan.isPopular
                   ? "border-2 border-primary shadow-lg"
                   : "border border-primary/50"
