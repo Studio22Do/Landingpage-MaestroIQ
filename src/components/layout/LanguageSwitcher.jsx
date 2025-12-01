@@ -1,14 +1,17 @@
 import { useLanguage } from "../../contexts/LanguageContext";
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ roundedTop = false }) => {
   const { language, changeLanguage } = useLanguage();
 
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
   };
 
+  const borderRadius = roundedTop ? "6px 6px 0px 0px" : "0px 0px 6px 6px";
+  const containerBorderRadius = roundedTop ? "6px 6px 0px 0px" : "0px 0px 6px 6px";
+
   return (
-    <div className="relative" style={{ width: "60px", height: "32px" }}>
+    <div className="relative overflow-hidden" style={{ width: "60px", height: "32px", borderRadius: containerBorderRadius }}>
         {/* Rectángulo de fondo para la opción seleccionada */}
         <div
           className="absolute transition-all duration-300"
@@ -16,7 +19,7 @@ const LanguageSwitcher = () => {
             width: "30px",
             height: "32px",
             backgroundColor: "#502F7C",
-            borderRadius: "0px 0px 6px 6px",
+            borderRadius: borderRadius,
             left: language === "EN" ? "0px" : "30px",
           }}
         />
