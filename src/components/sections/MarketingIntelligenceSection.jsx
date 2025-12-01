@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
-import vectorBg from "../../assets/Vectorbg.png";
+import vectorBg from "../../assets/Vectorbg.webp";
 import tabletImage from "../../assets/Group 237552.png";
 import blobSvg from "../../assets/Blob.svg";
 

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
-import layerImage from "../../assets/Layer.png";
+import layerImage from "../../assets/Layer.webp";
 import blobSvg from "../../assets/Blob.svg";
 
 const CustomPlanSection = () => {
