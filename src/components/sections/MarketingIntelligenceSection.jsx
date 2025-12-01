@@ -3,6 +3,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.webp";
+import bgMovil from "../../assets/bgmovil.png";
 import tabletImage from "../../assets/Group 237552.png";
 import blobSvg from "../../assets/Blob.svg";
 
@@ -167,8 +168,18 @@ const MarketingIntelligenceSection = () => {
 
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
+      {/* Background para móvil */}
       <div
-        className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full"
+        className="absolute inset-0 bg-no-repeat w-full sm:hidden h-[150vh]"
+        style={{ 
+          backgroundImage: `url(${bgMovil})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center center',
+        }}
+      />
+      {/* Background para desktop */}
+      <div
+        className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full hidden sm:block"
         style={{ backgroundImage: `url(${vectorBg})` }}
       />
       {/* Blob de fondo con animación de flotamiento y parallax */}
@@ -184,10 +195,10 @@ const MarketingIntelligenceSection = () => {
         />
       </div>
       <div
-        className="relative z-10 py-16 sm:py-24 md:py-32 lg:py-40 xl:py-80 2xl:py-[30rem] flex items-center justify-center px-4 sm:px-6 lg:pl-24 w-full overflow-hidden"
+        className="relative z-10 py-[13rem] lg:py-40 xl:py-80 2xl:py-[30rem] flex items-center justify-center px-4 sm:px-6 lg:pl-24 w-full overflow-hidden"
         style={{ minHeight: "100vh" }}
       >
-        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-between w-full max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-center lg:justify-between w-full max-w-7xl mx-auto">
           {/* Contenido del lado izquierdo */}
           <div ref={textContainerRef} className="text-center lg:text-left w-full lg:w-9/12 overflow-hidden order-2 lg:order-1">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8 text-white">
