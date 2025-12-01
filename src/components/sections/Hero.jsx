@@ -21,29 +21,41 @@ const Hero = () => {
         <img
           src={blobSvg}
           alt=""
-          className="floating-blob w-[301px] h-[308px] opacity-80"
-          style={{
-            position: "absolute",
-            top: "10%",
-            right: "0%",
-            transform: "translate(-50%, -50%)",
-          }}
+          className="floating-blob w-[301px] h-[308px] opacity-80 absolute top-[10%] -right-[35%] lg:right-0 lg:translate-x-[-50%] lg:translate-y-[-50%]"
           aria-hidden="true"
         />
       </div>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-        {/* Contenido del lado izquierdo */}
-        <div className="text-center lg:text-left z-10 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10 pt-24 sm:pt-32 lg:pt-0">
+        {/* Imagen - aparece primero en móvil */}
+        <div className="flex justify-center lg:justify-end relative lg:overflow-visible order-1 lg:order-2">
+          <img
+            src={heroImage}
+            alt="Dispositivos MaestroIQ"
+            className={`w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none lg:w-[700px] xl:w-[800px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2 transition-all ease-text-in ${
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-[140%] opacity-0"
+            }`}
+            style={{
+              transitionDuration: "0.8s",
+              transitionDelay: "0.2s",
+              transitionProperty: "transform, opacity",
+            }}
+          />
+        </div>
+
+        {/* Contenido del lado izquierdo - aparece después en móvil */}
+        <div className="text-center lg:text-left z-10 overflow-hidden order-2 lg:order-1">
           <h1
-            className={`text-6xl font-bold leading-tight mb-8 text-white transition-all ease-text-in ${
+            className={`text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 sm:mb-8 text-white transition-all ease-text-in ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-[140%] opacity-0"
             }`}
             style={{
               transitionDuration: "0.6s",
-              transitionDelay: "0s",
+              transitionDelay: "0.4s",
               transitionProperty: "transform, opacity",
             }}
           >
@@ -54,14 +66,14 @@ const Hero = () => {
           </h1>
 
           <p
-            className={`text-3xl font-medium text-white mb-12 leading-relaxed transition-all ease-text-in ${
+            className={`text-xl sm:text-2xl md:text-3xl font-medium text-white mb-8 sm:mb-12 leading-relaxed transition-all ease-text-in ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-[140%] opacity-0"
             }`}
             style={{
               transitionDuration: "0.6s",
-              transitionDelay: "0.3s",
+              transitionDelay: "0.5s",
               transitionProperty: "transform, opacity",
             }}
           >
@@ -78,30 +90,14 @@ const Hero = () => {
             }`}
             style={{
               transitionDuration: "0.6s",
-              transitionDelay: "0.5s",
+              transitionDelay: "0.6s",
               transitionProperty: "transform, opacity",
             }}
           >
-            <ButtonLarge variant="outline">{getTranslation(language, "hero.button")}</ButtonLarge>
+            <ButtonLarge variant="outline" className="text-lg sm:text-xl md:text-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4">
+              {getTranslation(language, "hero.button")}
+            </ButtonLarge>
           </div>
-        </div>
-
-        {/* Lado derecho - imagen */}
-        <div className="flex justify-center lg:justify-end relative lg:overflow-visible">
-          <img
-            src={heroImage}
-            alt="Dispositivos MaestroIQ"
-            className={`w-full max-w-5xl lg:max-w-none lg:w-[700px] xl:w-[800px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2 transition-all ease-text-in ${
-              isVisible
-                ? "translate-y-0 opacity-100"
-                : "translate-y-[140%] opacity-0"
-            }`}
-            style={{
-              transitionDuration: "0.8s",
-              transitionDelay: "0.5s",
-              transitionProperty: "transform, opacity",
-            }}
-          />
         </div>
       </div>
     </section>
