@@ -88,7 +88,7 @@ const HelpSection = () => {
 
           <form
             onSubmit={handleSubmit}
-            className={`flex flex-col sm:flex-row justify-center items-center max-w-md mx-auto transition-all ease-text-in ${
+            className={`flex flex-col sm:flex-row justify-center items-stretch sm:items-center max-w-md mx-auto transition-all ease-text-in ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-[140%] opacity-0"
@@ -104,12 +104,12 @@ const HelpSection = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={getTranslation(language, "help.emailPlaceholder")}
-              className="w-full sm:flex-1 h-[65px] px-10 rounded-l-[20px] rounded-r-0 border-2 border-r-0 border-primary bg-transparent text-white placeholder:text-white/30 text-2xl font-medium focus:outline-none focus:border-primary/50"
+              className="w-full sm:flex-1 h-[65px] px-6 sm:px-10 rounded-t-[20px] rounded-b-0 sm:rounded-none sm:rounded-l-[20px] border-2 border-b-0 sm:border-b-2 sm:border-r-0 border-primary bg-transparent text-white placeholder:text-white/30 text-base sm:text-2xl font-medium focus:outline-none focus:border-primary/50"
               required
             />
             <button
               type="submit"
-              className="w-full sm:w-auto h-[65px] px-12 rounded-r-[15px] rounded-l-0 bg-gradient-to-r from-secondary to-gradient-end text-white text-2xl font-medium border border-l-0 border-primary hover:opacity-90 transition-opacity duration-200"
+              className="w-full sm:w-auto h-[65px] px-8 sm:px-12 rounded-b-[15px] rounded-t-0 sm:rounded-none sm:rounded-r-[15px] bg-gradient-to-r from-secondary to-gradient-end text-white text-base sm:text-2xl font-medium border-2 border-t-0 sm:border-t-2 sm:border-l-0 border-primary hover:opacity-90 transition-opacity duration-200"
             >
               {getTranslation(language, "help.button")}
             </button>
