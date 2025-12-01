@@ -214,29 +214,23 @@ const CustomPlanSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="personalizado" className="py-20 scroll-mt-24 overflow-hidden relative">
+    <section ref={sectionRef} id="personalizado" className="py-16 sm:py-20 md:py-24 lg:py-32 scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24 overflow-hidden relative">
       {/* Blob de fondo con animación de flotamiento */}
       <div className="absolute inset-0 flex items-center justify-start pointer-events-none z-0">
         <img
           src={blobSvg}
           alt=""
-          className="floating-blob w-[281px] h-[288px] opacity-100"
-          style={{
-            position: "absolute",
-            top: "10%",
-            left: "-8%",
-            transform: "translate(-50%, -50%)",
-          }}
+          className="floating-blob w-[200px] h-[205px] sm:w-[240px] sm:h-[246px] lg:w-[281px] lg:h-[288px] opacity-100 absolute top-[10%] -left-[10%] sm:-left-[8%] lg:left-[-8%] lg:translate-x-[-50%] lg:translate-y-[-50%]"
           aria-hidden="true"
         />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row gap-12 items-center justify-between ">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-between">
           {/* Contenido del lado izquierdo */}
-          <div className="text-center lg:text-left flex-[1.2]">
+          <div className="text-center lg:text-left flex-[1.2] w-full lg:w-auto order-2 lg:order-1">
             <h2
               ref={titleRef}
-              className="text-6xl font-bold leading-tight mb-8 text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8 text-white"
               style={{
                 transform: `translateX(${titleCurrent.current.translateX}%)`,
                 opacity: titleCurrent.current.opacity,
@@ -249,7 +243,7 @@ const CustomPlanSection = () => {
 
             <p
               ref={descriptionRef}
-              className="text-3xl font-medium text-white mb-12 leading-relaxed"
+              className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 sm:mb-12 leading-relaxed"
               style={{
                 transform: `translateX(${descriptionCurrent.current.translateX}%)`,
                 opacity: descriptionCurrent.current.opacity,
@@ -266,17 +260,19 @@ const CustomPlanSection = () => {
                 opacity: buttonCurrent.current.opacity,
               }}
             >
-              <ButtonLarge variant="outline">{getTranslation(language, "customPlan.button")}</ButtonLarge>
+              <ButtonLarge variant="outline" className="text-lg sm:text-xl md:text-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4">
+                {getTranslation(language, "customPlan.button")}
+              </ButtonLarge>
             </div>
           </div>
 
           {/* Lado derecho - imagen */}
-          <div className="flex -mb-20 justify-center lg:justify-end flex-[0.8] lg:mt-16 ">
+          <div className="flex -mb-12 sm:-mb-16 lg:-mb-20 justify-center lg:justify-end flex-[0.8] lg:mt-16 w-full lg:w-auto order-1 lg:order-2">
             <img
               ref={imageRef}
               src={layerImage}
               alt="Infraestructura de datos personalizada"
-              className="w-full max-w-xl h-auto"
+              className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl h-auto"
               style={{
                 transform: `translateX(${imageCurrent.current.translateX}%)`,
                 opacity: imageCurrent.current.opacity,
