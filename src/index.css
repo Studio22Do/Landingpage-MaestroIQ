@@ -13,6 +13,9 @@
 /* Estilos globales personalizados */
 html {
   scroll-behavior: smooth;
+  background: #201C2E;
+  background: linear-gradient(8deg, rgba(32, 28, 46, 1) 10%, rgba(99, 93, 179, 1) 50%, rgba(32, 28, 46, 1) 90%);
+  min-height: 100%;
 }
 
 * {

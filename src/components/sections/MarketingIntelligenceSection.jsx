@@ -3,6 +3,7 @@ import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 import ButtonLarge from "../ui/ButtonLarge";
 import vectorBg from "../../assets/Vectorbg.webp";
+import bgMovil from "../../assets/bgmovil.svg";
 import tabletImage from "../../assets/Group 237552.png";
 import blobSvg from "../../assets/Blob.svg";
 
@@ -65,9 +66,11 @@ const MarketingIntelligenceSection = () => {
       smoothFactor
     );
 
-    // Aplicar la transformación directamente al DOM
-    if (imageRef.current) {
+    // Aplicar la transformación directamente al DOM (solo en desktop)
+    if (imageRef.current && window.innerWidth >= 1024) {
       imageRef.current.style.transform = `translateX(${currentTranslateX.current}%)`;
+    } else if (imageRef.current) {
+      imageRef.current.style.transform = 'none';
     }
 
     // Aplicar parallax al contenedor del blob (para no interferir con la animación CSS)
@@ -167,8 +170,29 @@ const MarketingIntelligenceSection = () => {
 
   return (
     <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
+      {/* Background para móvil */}
+      <div className="absolute inset-0 w-full sm:hidden overflow-hidden" style={{ background: 'transparent' }}>
+        <img 
+          src={bgMovil} 
+          alt="" 
+          className="w-full h-full object-cover object-center"
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%',
+            border: 'none',
+            outline: 'none',
+            background: 'transparent',
+            display: 'block'
+          }}
+          aria-hidden="true"
+        />
+      </div>
+      {/* Background para desktop */}
       <div
-        className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full"
+        className="absolute inset-0 bg-cover bg-top bg-no-repeat w-full h-full hidden sm:block"
         style={{ backgroundImage: `url(${vectorBg})` }}
       />
       {/* Blob de fondo con animación de flotamiento y parallax */}
@@ -179,24 +203,18 @@ const MarketingIntelligenceSection = () => {
         <img
           src={blobSvg}
           alt=""
-          className="floating-blob w-[481px] h-[488px] opacity-100"
-          style={{
-            position: "absolute",
-            top: "30%",
-            left: "40%",
-            transform: "translate(-50%, -50%)",
-          }}
+          className="floating-blob w-[200px] h-[203px] sm:w-[300px] sm:h-[305px] md:w-[400px] md:h-[406px] lg:w-[481px] lg:h-[488px] opacity-100 absolute top-[30%] left-[40%] lg:left-[40%] translate-x-[-50%] translate-y-[-50%]"
           aria-hidden="true"
         />
       </div>
       <div
-        className="relative z-10 py-80 xl:py-[30rem] flex items-center justify-center pl-4 sm:pl-6 w-full overflow-hidden"
+        className="relative z-10 py-[9rem] lg:py-40 xl:py-80 2xl:py-[30rem] flex items-center justify-center px-4 sm:px-6 lg:pl-24 w-full overflow-hidden"
         style={{ minHeight: "100vh" }}
       >
-        <div className=" pl-24 flex flex-col lg:flex-row gap-12 items-center justify-between w-full">
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-center lg:justify-between w-full max-w-7xl mx-auto">
           {/* Contenido del lado izquierdo */}
-          <div ref={textContainerRef} className="text-center lg:text-left w-9/12 overflow-hidden">
-            <h2 className="text-6xl font-bold leading-tight mb-8 text-white">
+          <div ref={textContainerRef} className="text-center lg:text-left w-full lg:w-9/12 overflow-hidden order-2 lg:order-1">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 sm:mb-8 text-white">
               <span className="inline-block overflow-hidden">
                 <span
                   className={`inline-block transition-all ease-text-in ${
@@ -234,15 +252,12 @@ const MarketingIntelligenceSection = () => {
               </span>
             </h2>
 
-            <p className="text-3xl font-medium text-white mb-12 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white mb-8 sm:mb-12 leading-relaxed">
               {getTranslation(language, "marketingIntelligence.description")}
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <ButtonLarge 
-                variant="outline" 
-                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
-              >
+              <ButtonLarge variant="outline" className="text-lg sm:text-xl md:text-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4">
                 {getTranslation(language, "marketingIntelligence.button")}
               </ButtonLarge>
             </div>
@@ -251,7 +266,7 @@ const MarketingIntelligenceSection = () => {
           {/* Lado derecho - imagen de la tablet */}
           <div 
             ref={imageRef}
-            className="flex justify-center lg:justify-end relative transition-none"
+            className="flex justify-center relative transition-none w-full lg:w-auto order-1 lg:order-2"
             style={{ 
               transform: `translateX(${currentTranslateX.current}%)`,
             }}
@@ -259,7 +274,7 @@ const MarketingIntelligenceSection = () => {
             <img 
               src={tabletImage} 
               alt="Marketing Intelligence Console" 
-              className="w-full max-w-5xl h-auto"
+              className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-5xl h-auto mx-auto"
             />
           </div>
         </div>

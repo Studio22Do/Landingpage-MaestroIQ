@@ -89,6 +89,8 @@ export const translations = {
     description: "Have questions or don't know where to start? Don't worry, our experts are available to help you whenever you need it.",
     emailPlaceholder: "Email",
     button: "Send",
+    sending: "Sending...",
+    sent: "Sent",
   },
   footer: {
     terms: "Terms and Conditions",
