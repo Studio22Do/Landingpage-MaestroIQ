@@ -82,7 +82,12 @@ const Hero = () => {
               transitionProperty: "transform, opacity",
             }}
           >
-            <ButtonLarge variant="outline">{getTranslation(language, "hero.button")}</ButtonLarge>
+            <ButtonLarge 
+              variant="outline" 
+              onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+            >
+              {getTranslation(language, "hero.button")}
+            </ButtonLarge>
           </div>
         </div>
 

@@ -167,6 +167,7 @@ const PricingSection = () => {
                 <ButtonLarge
                   variant="outline"
                   className="w-full h-20 rounded-[15px] bg-gradient-to-r from-secondary to-gradient-end border-0 hover:opacity-90"
+                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
                 >
                   {getTranslation(language, "pricing.acquirePlan")}
                 </ButtonLarge>
@@ -174,6 +175,7 @@ const PricingSection = () => {
                 <ButtonLarge
                   variant="outline"
                   className="w-full h-20 rounded-[15px] "
+                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
                 >
                   {getTranslation(language, "pricing.acquirePlan")}
                 </ButtonLarge>

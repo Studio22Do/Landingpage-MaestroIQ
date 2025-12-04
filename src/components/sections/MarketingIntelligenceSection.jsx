@@ -239,7 +239,12 @@ const MarketingIntelligenceSection = () => {
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <ButtonLarge variant="outline">{getTranslation(language, "marketingIntelligence.button")}</ButtonLarge>
+              <ButtonLarge 
+                variant="outline" 
+                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+              >
+                {getTranslation(language, "marketingIntelligence.button")}
+              </ButtonLarge>
             </div>
           </div>
 

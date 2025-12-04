@@ -37,7 +37,9 @@ const HelpSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí iría la lógica para enviar el correo
+    // Abrir la página de registro en una nueva pestaña
+    window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank');
+    // Aquí iría la lógica para enviar el correo si se desea mantener
     console.log("Email enviado:", email);
   };
 

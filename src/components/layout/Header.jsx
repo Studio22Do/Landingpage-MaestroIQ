@@ -86,8 +86,17 @@ const Header = () => {
             </nav>
 
             <div className="flex items-center space-x-4 h-full">
-              <Button variant="outline">{getTranslation(language, "header.crearCuenta")}</Button>
-              <Button variant="primary" icon={<UserIcon />}>
+              <Button 
+                variant="outline" 
+                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+              >
+                {getTranslation(language, "header.crearCuenta")}
+              </Button>
+              <Button 
+                variant="primary" 
+                icon={<UserIcon />}
+                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/login', '_blank')}
+              >
                 {getTranslation(language, "header.iniciarSesion")}
               </Button>
               <div className="self-start">

@@ -266,7 +266,12 @@ const CustomPlanSection = () => {
                 opacity: buttonCurrent.current.opacity,
               }}
             >
-              <ButtonLarge variant="outline">{getTranslation(language, "customPlan.button")}</ButtonLarge>
+              <ButtonLarge 
+                variant="outline" 
+                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+              >
+                {getTranslation(language, "customPlan.button")}
+              </ButtonLarge>
             </div>
           </div>
 
