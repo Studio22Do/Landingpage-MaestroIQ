@@ -8,10 +8,10 @@ export const translations = {
     iniciarSesion: "Sign In",
   },
   hero: {
-    title: "Centralize all your tasks in one place",
-    titleHighlight: "Centralize",
-    description: "A simple, intuitive and powerful application to organize your work.",
-    descriptionHighlight: "simple, intuitive and powerful application",
+    title: "Orchestrate your marketing with intelligence.",
+    titleHighlight: "Orchestrate",
+    description: "MaestroIQ centralizes ideas, visuals, copy and strategic insights in a single platform so you can plan and execute without friction. Creativity and data working in perfect harmony.",
+    descriptionHighlight: "ideas, visuals, copy and strategic insights",
     button: "Get Started",
   },
   keyFeatures: {
@@ -31,10 +31,10 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unify your tools. Multiply your impact.",
+    title: "Unify your tools, multiply your impact.",
     titleHighlight1: "Unify",
-    titleHighlight2: "Multiply",
-    description: "Access key information in media, marketing and market analysis to drive faster and more effective strategic decisions.",
+    titleHighlight2: "multiply",
+    description: "With MaestroIQ, access key information on media, marketing and market analysis to make faster and more effective strategic decisions.",
     button: "Sign Up",
   },
   pricing: {

@@ -60,9 +60,7 @@ const Hero = () => {
             }}
           >
             <span className="text-primary font-bold">{getTranslation(language, "hero.titleHighlight")}</span>{" "}
-            {language === "ES" 
-              ? "todas tus tareas en un solo lugar"
-              : "all your tasks in one place"}
+            {getTranslation(language, "hero.title").replace(getTranslation(language, "hero.titleHighlight"), "").trim()}
           </h1>
 
           <p

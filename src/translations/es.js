@@ -8,10 +8,10 @@ export const translations = {
     iniciarSesion: "Iniciar Sesión",
   },
   hero: {
-    title: "Centraliza todas tus tareas en un solo lugar",
-    titleHighlight: "Centraliza",
-    description: "Una aplicación simple, intuitiva y poderosa para organizar tu trabajo.",
-    descriptionHighlight: "aplicación simple, intuitiva y poderosa",
+    title: "Orquesta tu marketing con inteligencia.",
+    titleHighlight: "Orquesta",
+    description: "MaestroIQ centraliza ideas, visuales, copy e insights estratégicos en una sola plataforma para que planifiques y ejecutes sin fricciones. Creatividad y datos trabajando en perfecta armonía.",
+    descriptionHighlight: "ideas, visuales, copy e insights estratégicos",
     button: "Empieza ya",
   },
   keyFeatures: {
@@ -31,10 +31,10 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unifica tus herramientas. Multiplica tu impacto.",
+    title: "Unifica tus herramientas, multiplica tu impacto.",
     titleHighlight1: "Unifica",
-    titleHighlight2: "Multiplica",
-    description: "Accede a información clave en medios, marketing y análisis de mercado para impulsar decisiones estratégicas más rápidas y efectivas.",
+    titleHighlight2: "multiplica",
+    description: "Con MaestroIQ, accede a información clave de medios, marketing y análisis de mercado para tomar decisiones estratégicas más rápidas y efectivas.",
     button: "Regístrate",
   },
   pricing: {
