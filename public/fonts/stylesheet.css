@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'Futura';
-    src: url('Futura-Medium.eot');
-    src: url('Futura-Medium.eot?#iefix') format('embedded-opentype'),
-        url('Futura-Medium.woff2') format('woff2'),
-        url('Futura-Medium.woff') format('woff'),
-        url('Futura-Medium.ttf') format('truetype'),
-        url('Futura-Medium.svg#Futura-Medium') format('svg');
+    src: url('/fonts/Futura-Medium.eot');
+    src: url('/fonts/Futura-Medium.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Futura-Medium.woff2') format('woff2'),
+        url('/fonts/Futura-Medium.woff') format('woff'),
+        url('/fonts/Futura-Medium.ttf') format('truetype'),
+        url('/fonts/Futura-Medium.svg#Futura-Medium') format('svg');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -13,12 +13,12 @@
 
 @font-face {
     font-family: 'Futura';
-    src: url('Futura-Bold.eot');
-    src: url('Futura-Bold.eot?#iefix') format('embedded-opentype'),
-        url('Futura-Bold.woff2') format('woff2'),
-        url('Futura-Bold.woff') format('woff'),
-        url('Futura-Bold.ttf') format('truetype'),
-        url('Futura-Bold.svg#Futura-Bold') format('svg');
+    src: url('/fonts/Futura-Bold.eot');
+    src: url('/fonts/Futura-Bold.eot?#iefix') format('embedded-opentype'),
+        url('/fonts/Futura-Bold.woff2') format('woff2'),
+        url('/fonts/Futura-Bold.woff') format('woff'),
+        url('/fonts/Futura-Bold.ttf') format('truetype'),
+        url('/fonts/Futura-Bold.svg#Futura-Bold') format('svg');
     font-weight: bold;
     font-style: normal;
     font-display: swap;

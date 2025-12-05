@@ -39,40 +39,30 @@ export const translations = {
   },
   pricing: {
     title: "Descubre herramientas poderosas",
-    description: "Una consola centralizada de inteligencia y automatización diseñada para optimizar tus operaciones, agilizar flujos de contenido y ofrecerte insights que realmente impulsan decisiones.",
+    description: "Todos los planes ofrecen acceso total a todas las aplicaciones. El consumo se regula exclusivamente por el número de requests disponibles. Se pueden adquirir paquetes adicionales o cambiar de plan en cualquier momento.",
     monthly: "Mensual",
     annual: "Anual",
     acquirePlan: "Adquirir Plan",
     plans: {
       allegro: {
         name: "Allegro",
-        price: "$19.95/month",
+        price: "$25/month",
         features: [
-          "10 apps included",
-          "Access to basic features",
-          "Email support",
-          "Monthly usage report",
+          "1,000 Requests",
         ],
       },
       andante: {
         name: "Andante",
-        price: "$39.95/month",
+        price: "$45/month",
         features: [
-          "15 apps included",
-          "Access to advanced features",
-          "Priority email support",
-          "Weekly usage insights",
-          "Early access to new features",
+          "5,000 Requests",
         ],
       },
       fortissimo: {
         name: "Fortissimo",
-        price: "$69.95/month",
+        price: "$85/month",
         features: [
-          "25 apps included",
-          "Full feature set",
-          "Dedicated account manager",
-          "Real-time analytics",
+          "15,000 Requests",
         ],
       },
     },
