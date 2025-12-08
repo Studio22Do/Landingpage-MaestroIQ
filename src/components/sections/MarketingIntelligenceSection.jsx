@@ -284,7 +284,7 @@ const MarketingIntelligenceSection = () => {
               </span>
             </h2>
 
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-white mb-4 sm:mb-5 md:mb-6 lg:mb-8 leading-relaxed">
               <span className="inline-block overflow-hidden">
                 <span
                   className={`inline-block transition-all ease-text-in ${
@@ -321,10 +321,10 @@ const MarketingIntelligenceSection = () => {
                     }`}
                   >
                     <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-                      <h3 className="text-sm sm:text-xl md:text-xl lg:text-2xl font-bold text-white leading-tight">
+                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight">
                         {slide.title}
                       </h3>
-                      <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 leading-relaxed">
+                      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 leading-relaxed">
                         {slide.description}
                       </p>
                     </div>
