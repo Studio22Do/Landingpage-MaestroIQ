@@ -31,11 +31,30 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unify your tools, multiply your impact.",
-    titleHighlight1: "Unify",
-    titleHighlight2: "multiply",
-    description: "With MaestroIQ, access key information on media, marketing and market analysis to make faster and more effective strategic decisions.",
-    button: "Sign Up",
+    title: "What can you do with MaestroIQ?",
+    subtitle: "Orchestrate your content flow from start to finish, in a single platform powered by artificial intelligence:",
+    slides: [
+      {
+        title: "Get inspired with insights",
+        description: "Explore trends, analyze the environment and detect creative opportunities in media, marketing and market analysis.",
+      },
+      {
+        title: "Conceptualize with AI",
+        description: "Develop ideas, concepts and strategic approaches that connect with your audience and objectives.",
+      },
+      {
+        title: "Generate visual content",
+        description: "Create high-impact images and videos with artificial intelligence, ready for multiple formats and channels.",
+      },
+      {
+        title: "Write without friction",
+        description: "Write persuasive copy, product descriptions and optimized texts for each touchpoint.",
+      },
+      {
+        title: "Optimize and publish with confidence",
+        description: "Evaluate your content's performance, improve its impact and manage your entire process from one place.",
+      },
+    ],
   },
   pricing: {
     title: "Discover powerful tools",

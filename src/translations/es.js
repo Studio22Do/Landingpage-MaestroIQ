@@ -31,11 +31,30 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unifica tus herramientas, multiplica tu impacto.",
-    titleHighlight1: "Unifica",
-    titleHighlight2: "multiplica",
-    description: "Con MaestroIQ, accede a información clave de medios, marketing y análisis de mercado para tomar decisiones estratégicas más rápidas y efectivas.",
-    button: "Regístrate",
+    title: "Qué puedes hacer con MaestroIQ?",
+    subtitle: "Orquesta tu flujo de contenido de principio a fin, en una sola plataforma impulsada por inteligencia artificial:",
+    slides: [
+      {
+        title: "Inspírate con insights",
+        description: "Explora tendencias, analiza el entorno y detecta oportunidades creativas en medios, marketing y análisis de mercado.",
+      },
+      {
+        title: "Conceptualiza con IA",
+        description: "Desarrolla ideas, conceptos y enfoques estratégicos que conecten con tu audiencia y objetivos.",
+      },
+      {
+        title: "Genera contenido visual",
+        description: "Crea imágenes y videos de alto impacto con inteligencia artificial, listos para múltiples formatos y canales.",
+      },
+      {
+        title: "Redacta sin fricciones",
+        description: "Escribe copys persuasivos, descripciones de productos y textos optimizados para cada punto de contacto.",
+      },
+      {
+        title: "Optimiza y publica con confianza",
+        description: "Evalúa el rendimiento de tu contenido, mejora su impacto y gestiona todo tu proceso desde un solo lugar.",
+      },
+    ],
   },
   pricing: {
     title: "Descubre herramientas poderosas",
