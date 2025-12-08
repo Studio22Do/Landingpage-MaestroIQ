@@ -55,7 +55,7 @@ const KeyFeaturesSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="funciones" className="py-16 sm:py-24 md:py-32 lg:py-40 scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 sm:py-24 md:py-32 lg:py-40 scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24 relative overflow-hidden">
       {/* Blob de fondo con animación de flotamiento */}
       <div className="absolute inset-0 flex items-center justify-end pointer-events-none z-0">
         <img

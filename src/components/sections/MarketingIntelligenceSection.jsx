@@ -207,7 +207,7 @@ const MarketingIntelligenceSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="herramientas" className="w-full relative scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24" style={{ minHeight: "100vh" }}>
+    <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
       {/* Background para móvil */}
       <div className="absolute inset-0 w-full sm:hidden overflow-hidden" style={{ background: 'transparent' }}>
         <img 
@@ -252,7 +252,7 @@ const MarketingIntelligenceSection = () => {
         <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 items-center justify-center lg:justify-between w-full max-w-7xl mx-auto">
           {/* Contenido del lado izquierdo */}
           <div ref={textContainerRef} className="text-center lg:text-left w-full lg:w-9/12 overflow-hidden order-2 lg:order-1">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-white">
+            <h2 id="funciones" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6 text-white scroll-mt-24 sm:scroll-mt-28 lg:scroll-mt-32">
               <span className="inline-block overflow-hidden">
                 <span
                   className={`inline-block transition-all ease-text-in leading-tight ${

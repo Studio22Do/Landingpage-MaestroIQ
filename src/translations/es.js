@@ -1,7 +1,6 @@
 export const translations = {
   header: {
     funciones: "Funciones",
-    herramientas: "Herramientas",
     planes: "Planes",
     personalizado: "Personalizado",
     ayuda: "Ayuda",

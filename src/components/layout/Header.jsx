@@ -79,53 +79,46 @@ const Header = () => {
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20 lg:h-24">
-            <div className="flex items-center">
+          <div className="flex items-center">
               <a href="#inicio" className="cursor-pointer" onClick={handleNavClick}>
                 <img src="/logo.png" alt="MaestroIQ Logo" className="h-7 sm:h-8 lg:h-9 w-auto" />
               </a>
-            </div>
+          </div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 h-full">
               <nav className="flex space-x-8">
-                <a
-                  href="#funciones"
+              <a
+                href="#funciones"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-                >
+              >
                   {getTranslation(language, "header.funciones")}
-                </a>
-                <a
-                  href="#herramientas"
+              </a>
+              <a
+                href="#planes"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-                >
-                  {getTranslation(language, "header.herramientas")}
-                </a>
-                <a
-                  href="#planes"
-                  className="text-white hover:text-primary transition-colors"
-                  onClick={handleNavClick}
-                >
+              >
                   {getTranslation(language, "header.planes")}
-                </a>
-                <a
-                  href="#personalizado"
+              </a>
+              <a
+                href="#personalizado"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-                >
+              >
                   {getTranslation(language, "header.personalizado")}
-                </a>
-                <a
-                  href="#ayuda"
+              </a>
+              <a
+                href="#ayuda"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-                >
+              >
                   {getTranslation(language, "header.ayuda")}
-                </a>
-              </nav>
+              </a>
+            </nav>
 
               <div className="flex items-center space-x-4 h-full">
                 <Button variant="outline" className="hidden xl:inline-flex">
@@ -133,7 +126,7 @@ const Header = () => {
                 </Button>
                 <Button variant="primary" icon={<UserIcon />} className="hidden xl:inline-flex">
                   {getTranslation(language, "header.iniciarSesion")}
-                </Button>
+              </Button>
                 <div className="self-start">
                   <LanguageSwitcher />
                 </div>
@@ -174,13 +167,6 @@ const Header = () => {
             onClick={handleNavClick}
           >
             {getTranslation(language, "header.funciones")}
-          </a>
-          <a
-            href="#herramientas"
-            className="block text-white hover:text-primary transition-colors py-2 text-lg"
-            onClick={handleNavClick}
-          >
-            {getTranslation(language, "header.herramientas")}
           </a>
           <a
             href="#planes"
