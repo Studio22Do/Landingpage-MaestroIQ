@@ -121,10 +121,19 @@ const Header = () => {
             </nav>
 
               <div className="flex items-center space-x-4 h-full">
-                <Button variant="outline" className="hidden xl:inline-flex">
+                <Button 
+                  variant="outline" 
+                  className="hidden xl:inline-flex"
+                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+                >
                   {getTranslation(language, "header.crearCuenta")}
                 </Button>
-                <Button variant="primary" icon={<UserIcon />} className="hidden xl:inline-flex">
+                <Button 
+                  variant="primary" 
+                  icon={<UserIcon />} 
+                  className="hidden xl:inline-flex"
+                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/login', '_blank')}
+                >
                   {getTranslation(language, "header.iniciarSesion")}
               </Button>
                 <div className="self-start">
@@ -190,10 +199,19 @@ const Header = () => {
             {getTranslation(language, "header.ayuda")}
           </a>
           <div className="pt-4 space-y-3 border-t border-gray-700 mt-4">
-            <Button variant="outline" className="w-full justify-center">
+            <Button 
+              variant="outline" 
+              className="w-full justify-center"
+              onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+            >
               {getTranslation(language, "header.crearCuenta")}
             </Button>
-            <Button variant="primary" icon={<UserIcon />} className="w-full justify-center">
+            <Button 
+              variant="primary" 
+              icon={<UserIcon />} 
+              className="w-full justify-center"
+              onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/login', '_blank')}
+            >
               {getTranslation(language, "header.iniciarSesion")}
             </Button>
           </div>
