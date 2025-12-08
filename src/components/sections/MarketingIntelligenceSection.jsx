@@ -207,7 +207,7 @@ const MarketingIntelligenceSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full relative" style={{ minHeight: "100vh" }}>
+    <section ref={sectionRef} id="herramientas" className="w-full relative scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24" style={{ minHeight: "100vh" }}>
       {/* Background para móvil */}
       <div className="absolute inset-0 w-full sm:hidden overflow-hidden" style={{ background: 'transparent' }}>
         <img 

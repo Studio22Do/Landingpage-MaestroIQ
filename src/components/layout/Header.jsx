@@ -98,6 +98,13 @@ const Header = () => {
                   {getTranslation(language, "header.funciones")}
                 </a>
                 <a
+                  href="#herramientas"
+                  className="text-white hover:text-primary transition-colors"
+                  onClick={handleNavClick}
+                >
+                  {getTranslation(language, "header.herramientas")}
+                </a>
+                <a
                   href="#planes"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
@@ -167,6 +174,13 @@ const Header = () => {
             onClick={handleNavClick}
           >
             {getTranslation(language, "header.funciones")}
+          </a>
+          <a
+            href="#herramientas"
+            className="block text-white hover:text-primary transition-colors py-2 text-lg"
+            onClick={handleNavClick}
+          >
+            {getTranslation(language, "header.herramientas")}
           </a>
           <a
             href="#planes"
