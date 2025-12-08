@@ -1,6 +1,7 @@
 export const translations = {
   header: {
     funciones: "Funciones",
+    herramientas: "Herramientas",
     planes: "Planes",
     personalizado: "Personalizado",
     ayuda: "Ayuda",
@@ -8,10 +9,10 @@ export const translations = {
     iniciarSesion: "Iniciar Sesión",
   },
   hero: {
-    title: "Centraliza todas tus tareas en un solo lugar",
-    titleHighlight: "Centraliza",
-    description: "Una aplicación simple, intuitiva y poderosa para organizar tu trabajo.",
-    descriptionHighlight: "aplicación simple, intuitiva y poderosa",
+    title: "Orquesta tu marketing con inteligencia.",
+    titleHighlight: "Orquesta",
+    description: "MaestroIQ centraliza ideas, visuales, copy e insights estratégicos en una sola plataforma para que planifiques y ejecutes sin fricciones. Creatividad y datos trabajando en perfecta armonía.",
+    descriptionHighlight: "ideas, visuales, copy e insights estratégicos",
     button: "Empieza ya",
   },
   keyFeatures: {
@@ -31,48 +32,57 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unifica tus herramientas. Multiplica tu impacto.",
-    titleHighlight1: "Unifica",
-    titleHighlight2: "Multiplica",
-    description: "Accede a información clave en medios, marketing y análisis de mercado para impulsar decisiones estratégicas más rápidas y efectivas.",
-    button: "Regístrate",
+    title: "Qué puedes hacer con MaestroIQ?",
+    subtitle: "Orquesta tu flujo de contenido de principio a fin, en una sola plataforma impulsada por inteligencia artificial:",
+    slides: [
+      {
+        title: "Inspírate con insights",
+        description: "Explora tendencias, analiza el entorno y detecta oportunidades creativas en medios, marketing y análisis de mercado.",
+      },
+      {
+        title: "Conceptualiza con IA",
+        description: "Desarrolla ideas, conceptos y enfoques estratégicos que conecten con tu audiencia y objetivos.",
+      },
+      {
+        title: "Genera contenido visual",
+        description: "Crea imágenes y videos de alto impacto con inteligencia artificial, listos para múltiples formatos y canales.",
+      },
+      {
+        title: "Redacta sin fricciones",
+        description: "Escribe copys persuasivos, descripciones de productos y textos optimizados para cada punto de contacto.",
+      },
+      {
+        title: "Optimiza y publica con confianza",
+        description: "Evalúa el rendimiento de tu contenido, mejora su impacto y gestiona todo tu proceso desde un solo lugar.",
+      },
+    ],
   },
   pricing: {
     title: "Descubre herramientas poderosas",
-    description: "Una consola centralizada de inteligencia y automatización diseñada para optimizar tus operaciones, agilizar flujos de contenido y ofrecerte insights que realmente impulsan decisiones.",
+    description: "Todos los planes ofrecen acceso total a todas las aplicaciones. El consumo se regula exclusivamente por el número de requests disponibles. Se pueden adquirir paquetes adicionales o cambiar de plan en cualquier momento.",
     monthly: "Mensual",
     annual: "Anual",
     acquirePlan: "Adquirir Plan",
     plans: {
       allegro: {
         name: "Allegro",
-        price: "$19.95/month",
+        price: "$25/month",
         features: [
-          "10 apps included",
-          "Access to basic features",
-          "Email support",
-          "Monthly usage report",
+          "1,000 Requests",
         ],
       },
       andante: {
         name: "Andante",
-        price: "$39.95/month",
+        price: "$45/month",
         features: [
-          "15 apps included",
-          "Access to advanced features",
-          "Priority email support",
-          "Weekly usage insights",
-          "Early access to new features",
+          "5,000 Requests",
         ],
       },
       fortissimo: {
         name: "Fortissimo",
-        price: "$69.95/month",
+        price: "$85/month",
         features: [
-          "25 apps included",
-          "Full feature set",
-          "Dedicated account manager",
-          "Real-time analytics",
+          "15,000 Requests",
         ],
       },
     },

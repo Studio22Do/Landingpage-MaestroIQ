@@ -1,6 +1,7 @@
 export const translations = {
   header: {
     funciones: "Features",
+    herramientas: "Tools",
     planes: "Plans",
     personalizado: "Custom",
     ayuda: "Help",
@@ -8,10 +9,10 @@ export const translations = {
     iniciarSesion: "Sign In",
   },
   hero: {
-    title: "Centralize all your tasks in one place",
-    titleHighlight: "Centralize",
-    description: "A simple, intuitive and powerful application to organize your work.",
-    descriptionHighlight: "simple, intuitive and powerful application",
+    title: "Orchestrate your marketing with intelligence.",
+    titleHighlight: "Orchestrate",
+    description: "MaestroIQ centralizes ideas, visuals, copy and strategic insights in a single platform so you can plan and execute without friction. Creativity and data working in perfect harmony.",
+    descriptionHighlight: "ideas, visuals, copy and strategic insights",
     button: "Get Started",
   },
   keyFeatures: {
@@ -31,48 +32,57 @@ export const translations = {
     },
   },
   marketingIntelligence: {
-    title: "Unify your tools. Multiply your impact.",
-    titleHighlight1: "Unify",
-    titleHighlight2: "Multiply",
-    description: "Access key information in media, marketing and market analysis to drive faster and more effective strategic decisions.",
-    button: "Sign Up",
+    title: "What can you do with MaestroIQ?",
+    subtitle: "Orchestrate your content flow from start to finish, in a single platform powered by artificial intelligence:",
+    slides: [
+      {
+        title: "Get inspired with insights",
+        description: "Explore trends, analyze the environment and detect creative opportunities in media, marketing and market analysis.",
+      },
+      {
+        title: "Conceptualize with AI",
+        description: "Develop ideas, concepts and strategic approaches that connect with your audience and objectives.",
+      },
+      {
+        title: "Generate visual content",
+        description: "Create high-impact images and videos with artificial intelligence, ready for multiple formats and channels.",
+      },
+      {
+        title: "Write without friction",
+        description: "Write persuasive copy, product descriptions and optimized texts for each touchpoint.",
+      },
+      {
+        title: "Optimize and publish with confidence",
+        description: "Evaluate your content's performance, improve its impact and manage your entire process from one place.",
+      },
+    ],
   },
   pricing: {
     title: "Discover powerful tools",
-    description: "A centralized intelligence and automation console designed to optimize your operations, streamline content flows and provide insights that truly drive decisions.",
+    description: "All plans offer full access to all applications. Consumption is regulated exclusively by the number of available requests. Additional packages can be purchased or plans can be changed at any time.",
     monthly: "Monthly",
     annual: "Annual",
     acquirePlan: "Get Plan",
     plans: {
       allegro: {
         name: "Allegro",
-        price: "$19.95/month",
+        price: "$25/month",
         features: [
-          "10 apps included",
-          "Access to basic features",
-          "Email support",
-          "Monthly usage report",
+          "1,000 Requests",
         ],
       },
       andante: {
         name: "Andante",
-        price: "$39.95/month",
+        price: "$45/month",
         features: [
-          "15 apps included",
-          "Access to advanced features",
-          "Priority email support",
-          "Weekly usage insights",
-          "Early access to new features",
+          "5,000 Requests",
         ],
       },
       fortissimo: {
         name: "Fortissimo",
-        price: "$69.95/month",
+        price: "$85/month",
         features: [
-          "25 apps included",
-          "Full feature set",
-          "Dedicated account manager",
-          "Real-time analytics",
+          "15,000 Requests",
         ],
       },
     },

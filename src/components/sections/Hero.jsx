@@ -26,13 +26,13 @@ const Hero = () => {
         />
       </div>
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center relative z-10 pt-24 sm:pt-32 lg:pt-0">
+      <div className=" max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5  sm:gap-12 lg:gap-16 items-center relative z-10 pt-24 sm:pt-32 lg:pt-0">
         {/* Imagen - aparece primero en móvil */}
-        <div className="flex justify-center lg:justify-end relative lg:overflow-visible order-1 lg:order-2">
+        <div className=" flex justify-center lg:justify-end relative lg:overflow-visible order-1 lg:order-2 lg:col-span-2">
           <img
             src={heroImage}
             alt="Dispositivos MaestroIQ"
-            className={`w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none lg:w-[700px] xl:w-[800px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2 transition-all ease-text-in ${
+            className={`w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none lg:w-[600px] xl:w-[700px] h-auto lg:absolute lg:right-0 lg:translate-x-1/4 lg:top-1/2 lg:-translate-y-1/2 transition-all ease-text-in ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-[140%] opacity-0"
@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
 
         {/* Contenido del lado izquierdo - aparece después en móvil */}
-        <div className="text-center lg:text-left z-10 overflow-hidden order-2 lg:order-1">
+        <div className="text-center lg:text-left z-10 overflow-hidden order-2 lg:order-1 lg:col-span-3">
           <h1
             className={`text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 sm:mb-8 text-white transition-all ease-text-in ${
               isVisible
@@ -60,13 +60,11 @@ const Hero = () => {
             }}
           >
             <span className="text-primary font-bold">{getTranslation(language, "hero.titleHighlight")}</span>{" "}
-            {language === "ES" 
-              ? "todas tus tareas en un solo lugar"
-              : "all your tasks in one place"}
+            {getTranslation(language, "hero.title").replace(getTranslation(language, "hero.titleHighlight"), "").trim()}
           </h1>
 
           <p
-            className={`text-xl sm:text-2xl md:text-3xl font-medium text-white mb-8 sm:mb-12 leading-relaxed transition-all ease-text-in ${
+            className={`text-xl sm:text-2xl md:text-3xl lg:pr-16 font-medium text-white mb-8 sm:mb-12 leading-relaxed transition-all ease-text-in ${
               isVisible
                 ? "translate-y-0 opacity-100"
                 : "translate-y-[140%] opacity-0"
