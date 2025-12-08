@@ -266,7 +266,20 @@ const MarketingIntelligenceSection = () => {
                     transitionProperty: "transform, opacity"
                   }}
                 >
-                  {getTranslation(language, "marketingIntelligence.title")}
+                  {(() => {
+                    const title = getTranslation(language, "marketingIntelligence.title");
+                    const parts = title.split("MaestroIQ");
+                    if (parts.length === 2) {
+                      return (
+                        <>
+                          {parts[0]}
+                          <span className="text-primary">MaestroIQ</span>
+                          {parts[1]}
+                        </>
+                      );
+                    }
+                    return title;
+                  })()}
                 </span>
               </span>
             </h2>
