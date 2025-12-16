@@ -120,24 +120,24 @@ const Header = () => {
               </a>
             </nav>
 
-              <div className="flex items-center space-x-4 h-full">
-                <Button 
-                  variant="outline" 
-                  className="hidden xl:inline-flex"
-                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
-                >
-                  {getTranslation(language, "header.crearCuenta")}
-                </Button>
-                <Button 
-                  variant="primary" 
-                  icon={<UserIcon />} 
-                  className="hidden xl:inline-flex"
-                  onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/login', '_blank')}
-                >
-                  {getTranslation(language, "header.iniciarSesion")}
-              </Button>
-                <div className="self-start">
-                  <LanguageSwitcher />
+              <div className="flex flex-col items-end justify-center gap-2 h-full">
+                <LanguageSwitcher />
+                <div className="flex items-center space-x-4">
+                  <Button
+                    variant="outline"
+                    className="inline-flex"
+                    onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
+                  >
+                    {getTranslation(language, "header.crearCuenta")}
+                  </Button>
+                  <Button
+                    variant="primary"
+                    icon={<UserIcon />}
+                    className="inline-flex"
+                    onClick={() => window.open('https://dashboard.maestroiq.io/login', '_blank')}
+                  >
+                    {getTranslation(language, "header.iniciarSesion")}
+                  </Button>
                 </div>
               </div>
             </div>
