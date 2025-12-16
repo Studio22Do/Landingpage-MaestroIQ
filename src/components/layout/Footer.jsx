@@ -37,7 +37,14 @@ const Footer = () => {
           {/* Copyright */}
           <p className="text-base sm:text-lg md:text-xl font-medium text-gray-300">
             {getTranslation(language, "footer.copyright")}{" "}
-            <span className="underline">{getTranslation(language, "footer.poweredBy")}</span>
+            <a 
+              href="https://studio22.com.do/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="underline hover:text-primary transition-colors duration-200"
+            >
+              {getTranslation(language, "footer.poweredBy")}
+            </a>
           </p>
         </div>
       </div>
