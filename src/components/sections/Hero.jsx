@@ -15,7 +15,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="inicio" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden relative">
+    <section id="inicio" className="min-h-screen md:min-h-0 lg:min-h-screen flex items-center md:items-start md:pt-24 lg:items-center lg:pt-0 justify-center px-4 sm:px-6 lg:px-8 overflow-hidden relative">
       {/* Blob de fondo con animación de flotamiento */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
         <img
@@ -26,7 +26,7 @@ const Hero = () => {
         />
       </div>
       
-      <div className=" max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5  sm:gap-12 lg:gap-16 items-center relative z-10 pt-14 sm:pt-32 lg:pt-0">
+      <div className=" max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-5  sm:gap-12 lg:gap-16 items-center md:items-start lg:items-center relative z-10 pt-14 sm:pt-0 md:pt-0 lg:pt-0">
         {/* Imagen - aparece primero en móvil */}
         <div className=" flex justify-center lg:justify-end relative lg:overflow-visible order-1 lg:order-2 lg:col-span-2">
           <img
