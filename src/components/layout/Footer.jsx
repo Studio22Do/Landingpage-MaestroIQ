@@ -20,7 +20,8 @@ const Footer = () => {
           {/* Enlaces */}
           <div className="mb-3 sm:mb-4">
             <a
-              href="#terminos"
+              href="/terminos"
+              aria-label="Ver Términos y Condiciones"
               className="text-base sm:text-lg md:text-xl font-medium text-gray-300 hover:text-primary transition-colors duration-200"
             >
               {getTranslation(language, "footer.terms")}
