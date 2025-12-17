@@ -28,7 +28,8 @@ const Footer = () => {
             </a>
             <span className="text-base sm:text-lg md:text-xl font-medium text-gray-300 mx-2">|</span>
             <a
-              href="#privacidad"
+              href="/privacidad"
+              aria-label="Ver Política de Privacidad"
               className="text-base sm:text-lg md:text-xl font-medium text-gray-300 hover:text-primary transition-colors duration-200"
             >
               {getTranslation(language, "footer.privacy")}
