@@ -5,6 +5,8 @@ import ButtonLarge from "../ui/ButtonLarge";
 import EmailForm from "../ui/EmailForm";
 import blobSvg from "../../assets/Blob.svg";
 
+
+
 const HelpSection = () => {
   const { language } = useLanguage();
   const sectionRef = useRef(null);
