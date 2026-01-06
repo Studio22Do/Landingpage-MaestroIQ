@@ -202,7 +202,7 @@ const Header = () => {
             <Button 
               variant="outline" 
               className="w-full justify-center"
-              onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+              onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
             >
               {getTranslation(language, "header.crearCuenta")}
             </Button>
@@ -210,7 +210,7 @@ const Header = () => {
               variant="primary" 
               icon={<UserIcon />} 
               className="w-full justify-center"
-              onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/login', '_blank')}
+              onClick={() => window.open('https://dashboard.maestroiq.io/login', '_blank')}
             >
               {getTranslation(language, "header.iniciarSesion")}
             </Button>

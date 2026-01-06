@@ -8,7 +8,7 @@ const CTASection = () => {
         </p>
         <button 
           className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors duration-200 font-futura"
-          onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+          onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
         >
           Contactar Ahora
         </button>

@@ -263,7 +263,7 @@ const CustomPlanSection = () => {
               <ButtonLarge 
                 variant="outline" 
                 className="text-lg sm:text-xl md:text-2xl px-8 sm:px-12 md:px-16 py-3 sm:py-4"
-                onClick={() => window.open('https://m-aestro-i-qfrontendcompleto.vercel.app/register', '_blank')}
+                onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
               >
                 {getTranslation(language, "customPlan.button")}
               </ButtonLarge>
