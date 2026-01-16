@@ -90,54 +90,53 @@ const Header = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 h-full">
               <nav className="flex space-x-8">
-              <a
-                href="#funciones"
+                <a
+                  href="#funciones"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-              >
+                >
                   {getTranslation(language, "header.funciones")}
-              </a>
-              <a
-                href="#planes"
+                </a>
+                <a
+                  href="#planes"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-              >
+                >
                   {getTranslation(language, "header.planes")}
-              </a>
-              <a
-                href="#personalizado"
+                </a>
+                <a
+                  href="#personalizado"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-              >
+                >
                   {getTranslation(language, "header.personalizado")}
-              </a>
-              <a
-                href="#ayuda"
+                </a>
+                <a
+                  href="#ayuda"
                   className="text-white hover:text-primary transition-colors"
                   onClick={handleNavClick}
-              >
+                >
                   {getTranslation(language, "header.ayuda")}
-              </a>
-            </nav>
-
-              <div className="flex flex-col items-end justify-center gap-2 h-full">
-                <LanguageSwitcher />
-                <div className="flex items-center space-x-4">
-                  <Button
-                    variant="outline"
-                    className="inline-flex"
-                    onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
-                  >
-                    {getTranslation(language, "header.crearCuenta")}
-                  </Button>
-                  <Button
-                    variant="primary"
-                    icon={<UserIcon />}
-                    className="inline-flex"
-                    onClick={() => window.open('https://dashboard.maestroiq.io/login', '_blank')}
-                  >
-                    {getTranslation(language, "header.iniciarSesion")}
-                  </Button>
+                </a>
+              </nav>
+              <div className="flex items-center space-x-4 h-full">
+                <Button
+                  variant="outline"
+                  className="hidden xl:inline-flex"
+                  onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
+                >
+                  {getTranslation(language, "header.crearCuenta")}
+                </Button>
+                <Button
+                  variant="primary"
+                  icon={<UserIcon />}
+                  className="hidden xl:inline-flex"
+                  onClick={() => window.open('https://dashboard.maestroiq.io/login', '_blank')}
+                >
+                  {getTranslation(language, "header.iniciarSesion")}
+                </Button>
+                <div className="self-start">
+                  <LanguageSwitcher />
                 </div>
               </div>
             </div>
@@ -199,8 +198,8 @@ const Header = () => {
             {getTranslation(language, "header.ayuda")}
           </a>
           <div className="pt-4 space-y-3 border-t border-gray-700 mt-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="w-full justify-center"
               onClick={() => window.open('https://dashboard.maestroiq.io/register', '_blank')}
             >
