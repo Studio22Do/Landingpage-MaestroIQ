@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { getTranslation } from "../../translations";
 
+const API_URL = import.meta.env.VITE_API_URL || "https://welcome-cher-studio22-7583a81b.koyeb.app";
+
 const EmailForm = ({ isVisible }) => {
   const { language } = useLanguage();
   const [email, setEmail] = useState("");
@@ -14,22 +16,28 @@ const EmailForm = ({ isVisible }) => {
     setStatus("loading");
 
     try {
-      // Simular envío del correo
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      
-      console.log("Email enviado:", email);
+      const response = await fetch(`${API_URL}/api/beta_v2/contact/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || "Error al enviar");
+      }
+
       setStatus("success");
       setEmail("");
-      
-      // Resetear estado después de 3 segundos
+
       setTimeout(() => {
         setStatus("idle");
       }, 3000);
     } catch (error) {
       console.error("Error al enviar:", error);
       setStatus("error");
-      
-      // Resetear estado después de 3 segundos
+
       setTimeout(() => {
         setStatus("idle");
       }, 3000);
@@ -71,7 +79,6 @@ const EmailForm = ({ isVisible }) => {
         </button>
       </form>
 
-      {/* Mensajes de estado */}
       {status === "success" && (
         <div
           className="mt-4 p-4 rounded-lg bg-green-500/20 border border-green-500 text-green-400 text-center transition-all ease-text-in"
@@ -100,4 +107,3 @@ const EmailForm = ({ isVisible }) => {
 };
 
 export default EmailForm;
-
